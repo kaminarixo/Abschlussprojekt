@@ -100,3 +100,32 @@ Reports
 Funktion: Bericht über alle ausgelösten Alarme.
 Grund: Bietet eine Zusammenfassung der Alarme für Berichterstellung und Analysezwecke.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Startpunkt
+Um das Projekt zu beginnen, hier ist die empfohlene Reihenfolge der Implementierung:
+
+1. Table EDI_Settings:
+- Erstellen der Tabelle, um die Einrichtungsparameter zu speichern.
+- Felder: Überwachter Ordner, Überwachungsrhythmus, Dateitypen, E-Mail-Empfänger.
+
+2. Page EDI_Setup:
+- Entwickeln der Einrichtungsseite, um die Überwachungsparameter festzulegen.
+- Table EDI_Files und EDI_Alerts:
+
+3. Erstellen der Tabellen zur Speicherung von Dateiinformationen und Alarminformationen.
+- Page EDI_File_List und EDI_Alert_List:
+- Entwickeln der Übersichtsseiten für Dateien und Alarme.
+
+4.Codeunit EDI_File_Monitor:
+- Implementieren der Logik zur Überwachung des Ordners basierend auf den Einstellungen in EDI_Settings.
+
+5. Codeunit EDI_Alert_Sender:
+- Implementieren der Logik zum Versenden von Alarm-E-Mails.
+
+6.Codeunit EDI_Job_Queue:
+Implementieren der Logik, um Jobs in die Aufgabenwarteschlange einzutragen, basierend auf dem Überwachungsrhythmus.
+
+7.Report EDI_Alert_Report:
+Erstellen des Berichts über alle ausgelösten Alarme.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
