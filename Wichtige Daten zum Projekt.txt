@@ -54,3 +54,48 @@ Get-BcContainerDebugInfo -containerName abschlussprojekt to get debug informatio
 Enter-BcContainer -containerName abschlussprojekt to open a PowerShell prompt inside the container
 Remove-BcContainer -containerName abschlussprojekt to remove the container again
 docker logs abschlussprojekt to retrieve information about URL's again
+
+
+Tabellen (Tables)
+1. EDI_Settings
+Funktion: Speichert die Einrichtungsparameter für die Überwachung (Ordnerpfad, Überwachungsintervall, Dateitypen, E-Mail-Empfänger).
+Grund: Ermöglicht die Konfiguration der Überwachungsparameter, sodass das System flexibel und anpassbar ist.
+
+2. EDI_Files
+Funktion: Speichert Informationen über die Dateien im überwachten Ordner (Dateiname, Erstellungsdatum, Status).
+Grund: Ermöglicht die Nachverfolgung und Verwaltung der Dateien im Ordner, um deren Bearbeitungsstatus zu überwachen.
+
+3. EDI_Alerts
+Funktion: Speichert Informationen über ausgelöste Alarme (Datei, Zeitstempel, Empfänger).
+Grund: Hält fest, wann und warum ein Alarm ausgelöst wurde, was für die Berichterstellung und Fehlersuche wichtig ist.
+
+Pages
+1. EDI_Setup
+Funktion: Einrichtungsseite zur Verwaltung der Überwachungsparameter (Ordnerpfad, Überwachungsintervall, Dateitypen, E-Mail-Empfänger).
+Grund: Ermöglicht dem Benutzer, die Überwachungsparameter einfach und zentral zu konfigurieren.
+
+2. EDI_File_List
+Funktion: Zeigt eine Übersicht der Dateien im überwachten Ordner an.
+Grund: Bietet dem Benutzer eine Möglichkeit, den aktuellen Status der Dateien im Ordner zu sehen.
+
+3. EDI_Alert_List
+Funktion: Zeigt eine Übersicht der ausgelösten Alarme an.
+Grund: Bietet dem Benutzer eine Möglichkeit, die Alarme zu überwachen und zu verwalten.
+
+Codeunits (CU)
+1. EDI_File_Monitor
+Funktion: Überwacht den Ordner basierend auf den Einstellungen in EDI_Settings und erkennt veraltete Dateien.
+Grund: Implementiert die Hauptlogik zur Überwachung des Ordners und Erkennung von Dateien, die zu lange nicht bearbeitet wurden.
+
+2. EDI_Alert_Sender
+Funktion: Sendet Alarm-E-Mails an die E-Mail-Adresse aus EDI_Settings.
+Grund: Stellt sicher, dass Benutzer benachrichtigt werden, wenn Dateien zu lange im Ordner verbleiben.
+
+3. EDI_Job_Queue
+Funktion: Trägt Jobs in die Aufgabenwarteschlange ein, basierend auf dem Überwachungsrhythmus.
+Grund: Automatisiert die regelmäßige Ausführung der Überwachungsaufgabe, indem es Aufgaben in der Aufgabenwarteschlange plant.
+
+Reports
+1. EDI_Alert_Report
+Funktion: Bericht über alle ausgelösten Alarme.
+Grund: Bietet eine Zusammenfassung der Alarme für Berichterstellung und Analysezwecke.
