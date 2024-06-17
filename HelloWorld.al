@@ -10,6 +10,6 @@ pageextension 50100 CustomerListExt extends "Customer List"
 {
     trigger OnOpenPage();
     begin
-        Message('Es funktioniert wirklich wirklich wirklich');
+        Message('Es funktioniert wirklich wirklich wirklicha<sasdasd');
     end;
 }
