@@ -1,3 +1,4 @@
+namespace DefaultPublisher.Abschlussprojekt;
 table 50100 "EDI Settings"
 {
     DataClassification = ToBeClassified;
