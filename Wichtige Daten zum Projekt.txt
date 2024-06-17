@@ -18,7 +18,7 @@ New-BcContainer `
     -vsixFile (Get-LatestAlLanguageExtensionUrl) `
     -updateHosts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Container IP Address: 172.20.172.228
 Container Hostname  : abschlussprojekt
 Container Dns Name  : abschlussprojekt
@@ -55,7 +55,7 @@ Enter-BcContainer -containerName abschlussprojekt to open a PowerShell prompt in
 Remove-BcContainer -containerName abschlussprojekt to remove the container again
 docker logs abschlussprojekt to retrieve information about URL's again
 
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Tabellen (Tables)
 1. EDI_Settings
 Funktion: Speichert die Einrichtungsparameter für die Überwachung (Ordnerpfad, Überwachungsintervall, Dateitypen, E-Mail-Empfänger).
@@ -99,3 +99,4 @@ Reports
 1. EDI_Alert_Report
 Funktion: Bericht über alle ausgelösten Alarme.
 Grund: Bietet eine Zusammenfassung der Alarme für Berichterstellung und Analysezwecke.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
