@@ -1,0 +1,56 @@
+Der PowerShell Befehl gestartet in Power Shell ISE als Admin:
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+$containerName = 'abschlussprojekt'
+$password = 'P@ssw0rd'
+$securePassword = ConvertTo-SecureString -String $password -AsPlainText -Force
+$credential = New-Object pscredential 'admin', $securePassword
+$auth = 'UserPassword'
+$artifactUrl = Get-BcArtifactUrl -type 'Sandbox' -country 'de' -select 'Latest'
+New-BcContainer `
+    -accept_eula `
+    -containerName $containerName `
+    -credential $credential `
+    -auth $auth `
+    -artifactUrl $artifactUrl `
+    -imageName 'abschlussprojektimage' `
+    -memoryLimit 16G `
+    -includeAL -doNotExportObjectsToText `
+    -vsixFile (Get-LatestAlLanguageExtensionUrl) `
+    -updateHosts
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Container IP Address: 172.20.172.228
+Container Hostname  : abschlussprojekt
+Container Dns Name  : abschlussprojekt
+Web Client          : http://abschlussprojekt/BC/?tenant=default
+Dev. Server         : http://abschlussprojekt
+Dev. ServerInstance : BC
+Dev. Server Tenant  : default
+Setting abschlussprojekt to 172.20.172.228 in host hosts file
+Setting abschlussprojekt-default to 172.20.172.228 in host hosts file
+Setting abschlussprojekt-default to 172.20.172.228 in container hosts file
+
+Files:
+http://abschlussprojekt:8080/Microsoft.VisualStudio.Services.VSIXPackage.vsix
+
+Container Total Physical Memory is 16.5Gb
+Container Free Physical Memory is 13.4Gb
+
+Initialization took 73 seconds
+Ready for connections!
+Reading CustomSettings.config from abschlussprojekt
+Creating Desktop Shortcuts for abschlussprojekt
+Cleanup old dotnet core assemblies
+Creating .net Assembly Reference Folder
+Copying DLLs from C:\Program Files\dotnet\Shared to assemblyProbingPath
+Copying DLLs from C:\Program Files\Microsoft Dynamics NAV\240\Service to assemblyProbingPath
+Copying DLLs from C:\Test Assemblies\Mock Assemblies to assemblyProbingPath
+Removing dotnet Framework Assemblies
+Container abschlussprojekt successfully created
+
+Use:
+Get-BcContainerEventLog -containerName abschlussprojekt to retrieve a snapshot of the event log from the container
+Get-BcContainerDebugInfo -containerName abschlussprojekt to get debug information about the container
+Enter-BcContainer -containerName abschlussprojekt to open a PowerShell prompt inside the container
+Remove-BcContainer -containerName abschlussprojekt to remove the container again
+docker logs abschlussprojekt to retrieve information about URL's again
