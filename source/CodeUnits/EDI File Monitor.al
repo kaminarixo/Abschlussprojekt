@@ -1,3 +1,4 @@
+/*
 codeunit 50100 "EDI File Monitor"
 {
     SingleInstance = true;
@@ -114,3 +115,4 @@ codeunit 50100 "EDI File Monitor"
     end;
     
 }
+*/

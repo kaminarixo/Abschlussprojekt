@@ -1,3 +1,4 @@
+/*
 codeunit 50102 "EDI Job Queue"
 {
     Subtype = Normal;
@@ -39,3 +40,4 @@ codeunit 50102 "EDI Job Queue"
         ScheduleJob();
     end;
 }
+*/
