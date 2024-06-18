@@ -110,10 +110,11 @@ Um das Projekt zu beginnen, hier ist die empfohlene Reihenfolge der Implementier
 
 2. Page EDI_Setup:
 - Entwickeln der Einrichtungsseite, um die Überwachungsparameter festzulegen.
-- Table EDI_Files und EDI_Alerts:
 
-3. Erstellen der Tabellen zur Speicherung von Dateiinformationen und Alarminformationen.
-- Page EDI_File_List und EDI_Alert_List:
+3. Table EDI_Files und EDI_Alerts:
+- Erstellen der Tabellen zur Speicherung von Dateiinformationen und Alarminformationen.
+
+4. Page EDI_File_List und EDI_Alert_List:
 - Entwickeln der Übersichtsseiten für Dateien und Alarme.
 
 4.Codeunit EDI_File_Monitor:
