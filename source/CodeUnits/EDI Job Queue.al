@@ -15,12 +15,14 @@ codeunit 50102 "EDI Job Queue"
     var
         JobQueueEntry: Record "Job Queue Entry";
         NextRunDateTime: DateTime;
+        NextRunDate: Date;
     begin
         if not EDISettingsRec.FindFirst() then
             Error('EDI Settings not configured.');
 
         // Berechnen des nächsten Ausführungszeitpunkts basierend auf dem Überwachungsrhythmus
-        NextRunDateTime := CalcDate('+' + Format(EDISettingsRec."Monitoring Interval") + 'M', CurrentDateTime);
+        NextRunDate := CalcDate('+' + Format(EDISettingsRec."Monitoring Interval") + 'M', Today());
+        NextRunDateTime := CreateDateTime(NextRunDate, Time());
 
         JobQueueEntry.Init();
         JobQueueEntry."Job Queue Category Code" := ''; // Setzen Sie dies auf eine Kategorie, wenn erforderlich

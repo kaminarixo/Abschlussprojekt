@@ -1,0 +1,41 @@
+layout
+    {
+        area(header)
+        {
+            text(Title)
+            {
+                Value = 'EDI Alert Report';
+                FontSize = 14;
+                Bold = true;
+            }
+        }
+
+        area(content)
+        {
+            repeater(Group)
+            {
+                field("File Name"; "File Name")
+                {
+                    ApplicationArea = All;
+                }
+                field("Alert Timestamp"; "Alert Timestamp")
+                {
+                    ApplicationArea = All;
+                }
+                field("Recipient"; "Recipient")
+                {
+                    ApplicationArea = All;
+                }
+            }
+        }
+
+        area(footer)
+        {
+            text(Footer)
+            {
+                Value = 'End of Report';
+                FontSize = 12;
+                Italic = true;
+            }
+        }
+    }

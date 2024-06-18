@@ -3,6 +3,8 @@ report 50100 "EDI Alert Report"
     Caption = 'EDI Alert Report';
     ProcessingOnly = false;
     UsageCategory = ReportsAndAnalysis;
+    DefaultLayout = RDLC;
+    RDLCLayout = 'EDI Alert Report.Layout.rdl';
 
     dataset
     {
