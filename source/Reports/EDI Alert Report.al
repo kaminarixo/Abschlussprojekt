@@ -10,21 +10,20 @@ report 50100 "EDI Alert Report"
     {
         dataitem("EDI Alerts"; "EDI Alerts")
         {
-            column(File_Name; "File Name")
+            column("File_Name"; "File Name")
             {
-
+                // Caption kann entfernt werden, da sie veraltet ist
             }
-            column(Alert_Timestamp; "Alert Timestamp")
+            column("Alert_Timestamp"; "Alert Timestamp")
             {
-
+                // Caption kann entfernt werden, da sie veraltet ist
             }
             column("Recipient"; "Recipient")
             {
-
+                // Caption kann entfernt werden, da sie veraltet ist
             }
         }
     }
-
 
     requestpage
     {
@@ -34,18 +33,28 @@ report 50100 "EDI Alert Report"
             {
                 group(Group)
                 {
-                    field("From Date"; 'FromDate')
+                    field("From Date"; FromDate)
                     {
                         ApplicationArea = All;
                     }
-                    field("To Date"; 'ToDate')
+                    field("To Date"; ToDate)
                     {
                         ApplicationArea = All;
                     }
                 }
             }
         }
-
-
     }
+
+    var
+        FromDate: Date;
+
+    var
+        ToDate: Date;
+
+    trigger OnPreReport()
+    begin
+        if FromDate <> 0D then
+            "EDI Alerts".SetRange("Alert Timestamp", CreateDateTime(FromDate, 000000T), CreateDateTime(ToDate, 235959T));
+    end;
 }
