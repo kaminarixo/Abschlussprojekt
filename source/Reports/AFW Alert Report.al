@@ -4,7 +4,7 @@ report 50100 "EDI Alert Report"
     ProcessingOnly = false;
     UsageCategory = ReportsAndAnalysis;
     DefaultLayout = RDLC;
-    RDLCLayout = 'source/Reports/EDI Alert Report.Layout.rdl';
+    RDLCLayout = 'source/Reports/AFW Alert Report.Layout.rdl';
 
     dataset
     {

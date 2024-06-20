@@ -1,3 +1,5 @@
+Projekt: AmouFileWatch
+
 Der PowerShell Befehl gestartet in Power Shell ISE als Admin:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 $containerName = 'abschlussprojekt'

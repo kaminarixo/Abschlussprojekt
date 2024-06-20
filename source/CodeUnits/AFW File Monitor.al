@@ -1,5 +1,5 @@
 /*
-codeunit 50100 "EDI File Monitor"
+codeunit 50100 "AFW File Monitor"
 {
     SingleInstance = true;
     Subtype = Normal;
@@ -11,9 +11,9 @@ codeunit 50100 "EDI File Monitor"
 
     local procedure MonitorFolder()
     var
-        EDISettingsRec: Record "EDI Settings";
-        EDIFileRec: Record "EDI Files";
-        EDIAlertRec: Record "EDI Alerts";
+        AFWSettingsRec: Record "AFW Settings";
+        AFWFileRec: Record "AFW Files";
+        AFWAlertRec: Record "AFW Alerts";
         FolderPath: Text[250];
         FileTypes: Text[250];
         FileTypeArray: Array of [10] Text;
@@ -23,11 +23,11 @@ codeunit 50100 "EDI File Monitor"
         FileType: Text[10];
     
     begin
-        if not EDISettingsRec.FindFirst() then
-            Error('EDI Settings not configured.');
+        if not AFWSettingsRec.FindFirst() then
+            Error('AFW Settings not configured.');
 
-        FolderPath := EDISettingsRec."Folder Path";
-        FileTypes := EDISettingsRec."File Types";
+        FolderPath := AFWSettingsRec."Folder Path";
+        FileTypes := AFWSettingsRec."File Types";
         FileTypeArray := FileTypes.Split(',');
 
         // Get list of files in the folder
@@ -42,15 +42,15 @@ codeunit 50100 "EDI File Monitor"
 
             CreationDate := GetFileCreationDateTime(FileName);
 
-            if not EDIFileRec.Get(FileName) then begin
-                EDIFileRec.Init();
-                EDIFileRec."File Name" := FileName;
-                EDIFileRec."Creation Date" := CreationDate;
-                EDIFileRec.Status := EDIFileRec.Status::Pending;
-                EDIFileRec.Insert();
+            if not AFWFileRec.Get(FileName) then begin
+                AFWFileRec.Init();
+                AFWFileRec."File Name" := FileName;
+                AFWFileRec."Creation Date" := CreationDate;
+                AFWFileRec.Status := AFWFileRec.Status::Pending;
+                AFWFileRec.Insert();
             end else begin
                 if DateTime2Date(CreationDate) < CalcDate('<-30D>', CurrentDateTime) then begin
-                    CreateAlert(EDIFileRec);
+                    CreateAlert(AFWFileRec);
                 end;
             end;
         end;
@@ -96,22 +96,22 @@ codeunit 50100 "EDI File Monitor"
         exit(false);
     end;
 
-    local procedure CreateAlert(EDIFileRec: Record "EDI Files")
+    local procedure CreateAlert(AFWFileRec: Record "AFW Files")
     var
-        EDIAlertRec: Record "EDI Alerts";
-        EDISettingsRec: Record "EDI Settings";
+        AFWAlertRec: Record "AFW Alerts";
+        AFWSettingsRec: Record "AFW Settings";
     begin
-        if not EDISettingsRec.FindFirst() then
-            Error('EDI Settings not configured.');
+        if not AFWSettingsRec.FindFirst() then
+            Error('AFW Settings not configured.');
 
-        EDIAlertRec.Init();
-        EDIAlertRec."File Name" := EDIFileRec."File Name";
-        EDIAlertRec."Alert Timestamp" := CurrentDateTime;
-        EDIAlertRec."Recipient" := EDISettingsRec."Email Recipient";
-        EDIAlertRec.Insert();
+        AFWAlertRec.Init();
+        AFWAlertRec."File Name" := AFWFileRec."File Name";
+        AFWAlertRec."Alert Timestamp" := CurrentDateTime;
+        AFWAlertRec."Recipient" := AFWSettingsRec."Email Recipient";
+        AFWAlertRec.Insert();
 
-        // Call EDI_Alert_Sender to send email notification
-        Codeunit.Run(Codename::"EDI Alert Sender", EDIAlertRec);
+        // Call AFW_Alert_Sender to send email notification
+        Codeunit.Run(Codename::"AFW Alert Sender", AFWAlertRec);
     end;
     
 }
