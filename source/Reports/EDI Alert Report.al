@@ -8,6 +8,25 @@ report 50100 "EDI Alert Report"
 
     dataset
     {
+        dataitem("Company Information"; "Company Information")
+        {
+            column(CompanyPicture; CompanyInfoVar.Picture)
+            {
+
+            }
+            column(CompanyName; Name)
+            {
+
+            }
+            column(HeutigesDatum; CopyStr(Format(Today), 1, 8))
+            {
+
+            }
+            column(ReportName; CurrReport.ObjectId())
+            {
+
+            }
+        }
         dataitem("EDI Alerts"; "EDI Alerts")
         {
             column("File_Name"; "File Name")
@@ -48,13 +67,21 @@ report 50100 "EDI Alert Report"
 
     var
         FromDate: Date;
-
-    var
         ToDate: Date;
+        CompanyInfoVar: Record 79;
 
+    trigger OnInitReport()
+    begin
+        CompanyInfoVar.GET;
+        CompanyInfoVar.CalcFields(Picture);
+    end;
+}
+
+/*
     trigger OnPreReport()
     begin
         if FromDate <> 0D then
             "EDI Alerts".SetRange("Alert Timestamp", CreateDateTime(FromDate, 000000T), CreateDateTime(ToDate, 235959T));
     end;
 }
+*/
