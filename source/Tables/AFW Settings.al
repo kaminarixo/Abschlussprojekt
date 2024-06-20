@@ -1,6 +1,9 @@
 table 50100 "AFW Settings"
 {
     DataClassification = ToBeClassified;
+    DataPerCompany = false;
+    Caption = 'AFW Settings';
+    LookupPageId = 50103;
 
     fields
     {
@@ -9,6 +12,7 @@ table 50100 "AFW Settings"
             DataClassification = ToBeClassified;
             Caption = 'Folder Path';
             Description = 'The path of the folder to be monitored.';
+            Editable = true;
 
             trigger OnValidate()
             begin
@@ -41,6 +45,42 @@ table 50100 "AFW Settings"
                     Error('Email Recipient must not be empty.');
             end;
         }
+        field(5; "Is Active"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Is Active';
+            Description = 'Indicates if the setting is active.';
+        }
+        field(6; "Last Checked"; DateTime)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Last Checked';
+            Description = 'The date and time of the last folder check.';
+        }
+        field(7; "Created By"; Code[50])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Created By';
+            Description = 'The user who created the setting.';
+        }
+        field(8; "Created At"; DateTime)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Created At';
+            Description = 'The date and time when the setting was created.';
+        }
+        field(9; "Modified By"; Code[50])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Modified By';
+            Description = 'The user who last modified the setting.';
+        }
+        field(10; "Modified At"; DateTime)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Modified At';
+            Description = 'The date and time when the setting was last modified.';
+        }
     }
 
     keys
@@ -54,11 +94,15 @@ table 50100 "AFW Settings"
     trigger OnInsert()
     begin
         // Optional: Code to initialize default values or perform actions on insert
+        "Created By" := UserId();
+        "Created At" := CurrentDateTime();
     end;
 
     trigger OnModify()
     begin
         // Optional: Code to perform actions on modify
+        "Modified By" := UserId();
+        "Modified At" := CurrentDateTime();
     end;
 
     trigger OnDelete()
