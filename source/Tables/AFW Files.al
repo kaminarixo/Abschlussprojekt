@@ -1,4 +1,4 @@
-table 50101 "EDI Files"
+table 50101 "AFW Files"
 {
     DataClassification = ToBeClassified;
 

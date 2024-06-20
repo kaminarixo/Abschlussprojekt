@@ -1,9 +1,9 @@
-page 50101 "EDI File List"
+page 50101 "AFW File List"
 {
     PageType = List;
     ApplicationArea = All;
-    SourceTable = "EDI Files";
-    Caption = 'EDI File List';
+    SourceTable = "AFW Files";
+    Caption = 'AmouFileWatch File List';
 
     layout
     {

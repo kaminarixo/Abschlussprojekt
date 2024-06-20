@@ -1,4 +1,4 @@
-table 50102 "EDI Alerts"
+table 50102 "AFW Alerts"
 {
     DataClassification = ToBeClassified;
 

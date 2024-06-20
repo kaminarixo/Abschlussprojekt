@@ -1,9 +1,9 @@
-page 50102 "EDI Alert List"
+page 50102 "AFW Alert List"
 {
     PageType = List;
     ApplicationArea = All;
-    SourceTable = "EDI Alerts";
-    Caption = 'EDI Alert List';
+    SourceTable = "AFW Alerts";
+    Caption = 'AmouFileWatch Alert List';
 
     layout
     {

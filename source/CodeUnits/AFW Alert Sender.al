@@ -1,4 +1,4 @@
-codeunit 50101 "EDI Alert Sender"
+codeunit 50101 "AFW Alert Sender"
 {
     Subtype = Normal;
 
@@ -32,7 +32,7 @@ codeunit 50101 "EDI Alert Sender"
             Recipients.Add(Recipient);
 
             // Create and send the email
-            Emailmessage.Create(Recipients, 'EDI Alert Notification', BodyMessage + AddBodyMessage, true);
+            Emailmessage.Create(Recipients, 'AFW Alert Notification', BodyMessage + AddBodyMessage, true);
             EmailSend.Send(Emailmessage, Enum::"email scenario"::Default);
         end else
             Error('SMTP Email Account not configured.');

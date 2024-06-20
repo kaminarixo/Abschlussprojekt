@@ -1,6 +1,6 @@
-report 50100 "EDI Alert Report"
+report 50100 "AFW Alert Report"
 {
-    Caption = 'EDI Alert Report';
+    Caption = 'AFW Alert Report';
     ProcessingOnly = false;
     UsageCategory = ReportsAndAnalysis;
     DefaultLayout = RDLC;
@@ -27,7 +27,7 @@ report 50100 "EDI Alert Report"
 
             }
         }
-        dataitem("EDI Alerts"; "EDI Alerts")
+        dataitem("AFW Alerts"; "AFW Alerts")
         {
             column("File_Name"; "File Name")
             {
@@ -81,7 +81,7 @@ report 50100 "EDI Alert Report"
     trigger OnPreReport()
     begin
         if FromDate <> 0D then
-            "EDI Alerts".SetRange("Alert Timestamp", CreateDateTime(FromDate, 000000T), CreateDateTime(ToDate, 235959T));
+            "AFW Alerts".SetRange("Alert Timestamp", CreateDateTime(FromDate, 000000T), CreateDateTime(ToDate, 235959T));
     end;
 }
 */
