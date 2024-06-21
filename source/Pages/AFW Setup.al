@@ -4,6 +4,8 @@ page 50100 "AFW Setup"
     SourceTable = "AFW Settings";
     ApplicationArea = All;
     Caption = 'AFW Setup';
+    InsertAllowed = false;
+    ModifyAllowed = true;
 
     layout
     {

@@ -2,7 +2,7 @@ table 50100 "AFW Settings"
 {
     DataClassification = ToBeClassified;
     DataPerCompany = false;
-
+    
     fields
     {
         field(1; "Enable Monitoring"; Boolean)
