@@ -14,11 +14,25 @@ table 50101 "AFW Files"
             DataClassification = ToBeClassified;
             Caption = 'Creation Date';
         }
-        field(3; "Status"; Option)
+        field(3; "Status"; Enum "AFW File Status")
         {
             DataClassification = ToBeClassified;
             Caption = 'Status';
-            OptionMembers = Pending,Processed,Error;
+        }
+        field(4; "Folder Path"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Folder Path';
+        }
+        field(5; "File Types"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'File Types';
+        }
+        field(6; "Email Recipient"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Email Recipient';
         }
     }
 
