@@ -1,6 +1,7 @@
 page 50101 "AFW File List"
 {
     PageType = List;
+    UsageCategory = Lists;
     ApplicationArea = All;
     SourceTable = "AFW Files";
     Caption = 'AmouFileWatch File List';
@@ -56,6 +57,18 @@ page 50101 "AFW File List"
                 trigger OnAction()
                 begin
                     CurrPage.Update(true);
+                end;
+            }
+
+            action("New Job")
+            {
+                ApplicationArea = All;
+                Caption = 'New Job';
+                ToolTip = 'Create a new monitoring job.';
+
+                trigger OnAction()
+                begin
+                    PAGE.RunModal(PAGE::"AFW Job Card", Rec);
                 end;
             }
         }

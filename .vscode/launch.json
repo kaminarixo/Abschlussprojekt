@@ -9,7 +9,7 @@
             "server": "http://abschlussprojekt/",
             "serverInstance": "BC",
             "authentication": "UserPassword",
-            "startupObjectId": 50103,
+            "startupObjectId": 50101,
             "startupObjectType": "Page",
             //"schemaUpdateMode": "ForceSync",
             "breakOnError": "All",

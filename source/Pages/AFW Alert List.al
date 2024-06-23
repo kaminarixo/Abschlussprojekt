@@ -1,9 +1,12 @@
 page 50102 "AFW Alert List"
 {
     PageType = List;
+    UsageCategory = Lists;
     ApplicationArea = All;
     SourceTable = "AFW Alerts";
     Caption = 'AmouFileWatch Alert List';
+    ModifyAllowed = false;
+    InsertAllowed = false;
 
     layout
     {
