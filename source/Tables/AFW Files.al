@@ -24,7 +24,7 @@ table 50101 "AFW Files"
             DataClassification = ToBeClassified;
             Caption = 'Folder Path';
         }
-        field(5; "File Types"; Text[250])
+        field(5; "File Types"; Enum "AFW File Types")
         {
             DataClassification = ToBeClassified;
             Caption = 'File Types';
@@ -33,6 +33,7 @@ table 50101 "AFW Files"
         {
             DataClassification = ToBeClassified;
             Caption = 'Email Recipient';
+            ExtendedDatatype = EMail;
         }
     }
 

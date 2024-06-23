@@ -4,6 +4,7 @@ page 50101 "AFW File List"
     UsageCategory = Lists;
     ApplicationArea = All;
     SourceTable = "AFW Files";
+    CardPageId = "AFW Job Card";
     Caption = 'AmouFileWatch File List';
 
     layout
@@ -20,7 +21,7 @@ page 50101 "AFW File List"
                 field("Creation Date"; Rec."Creation Date")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'The date and time when the file was created.';
+                    ToolTip = 'The date and time when the job was created.';
                 }
                 field("Status"; Rec."Status")
                 {
@@ -45,32 +46,5 @@ page 50101 "AFW File List"
             }
         }
     }
-
-    actions
-    {
-        area(processing)
-        {
-            action("Refresh List")
-            {
-                ApplicationArea = All;
-                Caption = 'Refresh List';
-                trigger OnAction()
-                begin
-                    CurrPage.Update(true);
-                end;
-            }
-
-            action("New Job")
-            {
-                ApplicationArea = All;
-                Caption = 'New Job';
-                ToolTip = 'Create a new monitoring job.';
-
-                trigger OnAction()
-                begin
-                    PAGE.RunModal(PAGE::"AFW Job Card", Rec);
-                end;
-            }
-        }
-    }
 }
+

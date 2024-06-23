@@ -1,11 +1,12 @@
 page 50100 "AFW Setup"
 {
     PageType = Card;
-    UsageCategory = Tasks;
+    UsageCategory = Administration;
     SourceTable = "AFW Settings";
     ApplicationArea = All;
     Caption = 'AFW Setup';
     InsertAllowed = false;
+    DeleteAllowed = false;
     ModifyAllowed = true;
 
     layout

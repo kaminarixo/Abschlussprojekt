@@ -1,4 +1,4 @@
-enum 50102 "AFW File Status"
+enum 50101 "AFW File Status"
 {
     Extensible = false;
     Caption = 'AFW File Status';

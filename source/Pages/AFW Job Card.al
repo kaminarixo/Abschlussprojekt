@@ -36,22 +36,4 @@ page 50103 "AFW Job Card"
             }
         }
     }
-
-    actions
-    {
-        area(processing)
-        {
-            action("Start Job")
-            {
-                Caption = 'Start Job';
-                ApplicationArea = All;
-                ToolTip = 'Start the monitoring job.';
-
-                trigger OnAction()
-                begin
-                    // Code to start the job
-                end;
-            }
-        }
-    }
 }

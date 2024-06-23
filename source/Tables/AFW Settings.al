@@ -2,22 +2,28 @@ table 50100 "AFW Settings"
 {
     DataClassification = ToBeClassified;
     DataPerCompany = false;
-    
+
     fields
     {
-        field(1; "Enable Monitoring"; Boolean)
+        field(1; "Primary Key"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Primary key';
+            Description = 'This is the primary key';
+        }
+        field(2; "Enable Monitoring"; Boolean)
         {
             DataClassification = ToBeClassified;
             Caption = 'Enable Monitoring';
             Description = 'A switch to globally enable or disable monitoring.';
         }
-        field(2; "Enable Logging"; Boolean)
+        field(3; "Enable Logging"; Boolean)
         {
             DataClassification = ToBeClassified;
             Caption = 'Enable Logging';
             Description = 'A switch to enable or disable logging of events.';
         }
-        field(3; "Log File Path"; Text[250])
+        field(4; "Log File Path"; Text[250])
         {
             DataClassification = ToBeClassified;
             Caption = 'Log File Path';
@@ -27,7 +33,7 @@ table 50100 "AFW Settings"
 
     keys
     {
-        key(PK; "Enable Monitoring")
+        key(PK; "Primary Key")
         {
             Clustered = true;
         }

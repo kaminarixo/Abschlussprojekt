@@ -1,4 +1,4 @@
-enum 50101 "AFW Monitoring Interval"
+enum 50100 "AFW Monitoring Interval"
 {
     Extensible = true;
 
