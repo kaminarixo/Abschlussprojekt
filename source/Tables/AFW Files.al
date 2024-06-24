@@ -35,6 +35,11 @@ table 50101 "AFW Files"
             Caption = 'Email Recipient';
             ExtendedDatatype = EMail;
         }
+        field(7; "Monitoring Interval"; Enum "AFW Monitoring Interval")
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Monitoring Interval';
+        }
     }
 
     keys

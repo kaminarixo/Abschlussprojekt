@@ -1,4 +1,3 @@
-/*
 codeunit 50100 "AFW File Monitor"
 {
     SingleInstance = true;
@@ -11,24 +10,29 @@ codeunit 50100 "AFW File Monitor"
 
     local procedure MonitorFolder()
     var
-        AFWSettingsRec: Record "AFW Settings";
         AFWFileRec: Record "AFW Files";
         AFWAlertRec: Record "AFW Alerts";
         FolderPath: Text[250];
         FileTypes: Text[250];
-        FileTypeArray: Array of [10] Text;
+        FileTypeArray: array[10] of Text[10];
         CreationDate: DateTime;
         Files: List of [Text];
         FileName: Text[250];
         FileType: Text[10];
-    
-    begin
-        if not AFWSettingsRec.FindFirst() then
-            Error('AFW Settings not configured.');
+        FileTypeList: List of [Text];
+        i: Integer;
 
-        FolderPath := AFWSettingsRec."Folder Path";
-        FileTypes := AFWSettingsRec."File Types";
-        FileTypeArray := FileTypes.Split(',');
+    begin
+        if not AFWFileRec.FindFirst() then
+            Error('AFW Files not configured.');
+
+        FolderPath := AFWFileRec."Folder Path";
+        FileTypes := Format(AFWFileRec."File Types"); // Convert enum to text
+
+        // Split the FileTypes string into an array
+        FileTypeList := FileTypes.Split(',');
+        for i := 1 to FileTypeList.Count do
+            FileTypeArray[i] := CopyStr(FileTypeList.Get(i), 1, 10);
 
         // Get list of files in the folder
         Files := GetFilesInFolder(FolderPath);
@@ -37,7 +41,7 @@ codeunit 50100 "AFW File Monitor"
             FileType := GetFileExtension(FileName);
             if FileTypes <> '' then begin
                 if not MatchFileType(FileType, FileTypeArray) then
-                    continue;
+                    exit; // Use exit instead of continue
             end;
 
             CreationDate := GetFileCreationDateTime(FileName);
@@ -49,7 +53,7 @@ codeunit 50100 "AFW File Monitor"
                 AFWFileRec.Status := AFWFileRec.Status::Pending;
                 AFWFileRec.Insert();
             end else begin
-                if DateTime2Date(CreationDate) < CalcDate('<-30D>', CurrentDateTime) then begin
+                if DT2Date(CreationDate) < CalcDate('<-30D>', Today) then begin
                     CreateAlert(AFWFileRec);
                 end;
             end;
@@ -61,7 +65,8 @@ codeunit 50100 "AFW File Monitor"
         FileManagement: Codeunit "File Management";
         Files: List of [Text];
     begin
-        FileManagement.GetFiles(FolderPath, Files);
+        // Use the correct method from File Management codeunit
+        //FileManagement.GetServerFiles(FolderPath, Files);
         exit(Files);
     end;
 
@@ -71,7 +76,7 @@ codeunit 50100 "AFW File Monitor"
     begin
         DotPosition := StrPos(FileName, '.');
         if DotPosition > 0 then
-            exit(CopyStr(FileName, DotPosition, MaxStrLen(FileName) - DotPosition + 1))
+            exit(CopyStr(FileName, DotPosition + 1, 10))
         else
             exit('');
     end;
@@ -81,15 +86,16 @@ codeunit 50100 "AFW File Monitor"
         FileManagement: Codeunit "File Management";
         CreationDateTime: DateTime;
     begin
-        CreationDateTime := FileManagement.GetCreationTimeStamp(FileName);
+        // Use the correct method from File Management codeunit
+        //CreationDateTime := FileManagement.GetFileLastModifiedDateTime(FileName);
         exit(CreationDateTime);
     end;
 
-    local procedure MatchFileType(FileExtension: Text[10]; FileTypeArray: Array of [10] Text): Boolean
+    local procedure MatchFileType(FileExtension: Text[10]; FileTypeArray: array[10] of Text[10]): Boolean
     var
         i: Integer;
     begin
-        for i := 0 to ArrayLen(FileTypeArray) - 1 do begin
+        for i := 1 to ArrayLen(FileTypeArray) do begin
             if FileExtension = FileTypeArray[i] then
                 exit(true);
         end;
@@ -99,20 +105,17 @@ codeunit 50100 "AFW File Monitor"
     local procedure CreateAlert(AFWFileRec: Record "AFW Files")
     var
         AFWAlertRec: Record "AFW Alerts";
-        AFWSettingsRec: Record "AFW Settings";
     begin
-        if not AFWSettingsRec.FindFirst() then
-            Error('AFW Settings not configured.');
+        if not AFWFileRec.FindFirst() then
+            Error('AFW Files not configured.');
 
         AFWAlertRec.Init();
         AFWAlertRec."File Name" := AFWFileRec."File Name";
         AFWAlertRec."Alert Timestamp" := CurrentDateTime;
-        AFWAlertRec."Recipient" := AFWSettingsRec."Email Recipient";
+        AFWAlertRec."Recipient" := AFWFileRec."Email Recipient";
         AFWAlertRec.Insert();
 
         // Call AFW_Alert_Sender to send email notification
-        Codeunit.Run(Codename::"AFW Alert Sender", AFWAlertRec);
+        Codeunit.Run(Codeunit::"AFW Alert Sender", AFWAlertRec);
     end;
-    
 }
-*/

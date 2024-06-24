@@ -22,4 +22,20 @@ enum 50100 "AFW Monitoring Interval"
     {
         Caption = '1 Hour';
     }
+    value(120; "2 Hours")
+    {
+        Caption = '2 Hours';
+    }
+    value(240; "4 Hours")
+    {
+        Caption = '4 Hours';
+    }
+    value(480; "8 Hours")
+    {
+        Caption = '8 Hours';
+    }
+    value(1440; "1 Day")
+    {
+        Caption = '1 Day';
+    }
 }
