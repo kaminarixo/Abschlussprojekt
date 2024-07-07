@@ -7,6 +7,8 @@ table 50101 "AFW Files"
         field(1; "Primary Key"; Code[10])
         {
             DataClassification = ToBeClassified;
+            Caption = 'Primary key';
+            Description = 'This is the primary key';
         }
         field(2; "File Name"; Text[250])
         {

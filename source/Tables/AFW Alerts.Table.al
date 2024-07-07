@@ -4,17 +4,23 @@ table 50102 "AFW Alerts"
 
     fields
     {
-        field(1; "File Name"; Text[250])
+        field(1; "Primary Key"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Primary key';
+            Description = 'This is the primary key';
+        }
+        field(2; "File Name"; Text[250])
         {
             DataClassification = ToBeClassified;
             Caption = 'File Name';
         }
-        field(2; "Alert Timestamp"; DateTime)
+        field(3; "Alert Timestamp"; DateTime)
         {
             DataClassification = ToBeClassified;
             Caption = 'Alert Timestamp';
         }
-        field(3; "Recipient"; Text[250])
+        field(4; "Recipient"; Text[250])
         {
             DataClassification = ToBeClassified;
             Caption = 'Recipient';

@@ -6,7 +6,7 @@
             "request": "launch",
             "type": "al",
             "environmentType": "OnPrem",
-            "server": "http://abschlussprojekt/",
+            "server": "http://abschluss-onprem/BC/",
             "serverInstance": "BC",
             "authentication": "UserPassword",
             "startupObjectId": 50100,
