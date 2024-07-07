@@ -1,21 +1,17 @@
-/*
-codeunit 50149 TempBlobManagement
+codeunit 50149 TestCodeUnit
 {
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"ApplicationManagement", 'OnCompanyInitialize', '', false, false)]
-    local procedure OnCompanyInitialize()
-    begin
-        // Initialisierungscode, falls benötigt
-    end;
-
-    procedure FileExists(FileName: Text): Boolean
+    trigger OnRun()
     var
-        FileMgt: Codeunit "File Management";
-        InStr: InStream;
+        TestFile: File;
+        FileName: Text;
     begin
-        if FileMgt.BLOBImportFromServerFile(InStr, FileName) then
-            exit(true)
-        else
-            exit(false);
+        FileName := 'C:\TestFolder\TestFile2.txt';
+        if exists(FileName) then begin
+            TestFile.WriteMode(true);
+            TestFile.Open(FileName);
+            TestFile.Write('Hello World');
+            TestFile.Close;
+        end else
+            Message('%1 does not exist.', FileName);
     end;
 }
-*/
