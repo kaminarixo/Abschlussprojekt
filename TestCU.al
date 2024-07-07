@@ -1,15 +1,21 @@
-codeunit 50149 TestCodeUnit
+/*
+codeunit 50149 TempBlobManagement
 {
-    trigger OnRun()
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"ApplicationManagement", 'OnCompanyInitialize', '', false, false)]
+    local procedure OnCompanyInitialize()
     begin
-        // MyFile := 'C:\Users\thoma\desktop\EDI';
-        //if EXISTS(MyFile) THEN begin
-        //   MyFile.WRITEMODE(TRUE);
+        // Initialisierungscode, falls benötigt
     end;
-    //Message('Es hat die Datei %1 gefunden.', MyFile);
-    // end;
 
+    procedure FileExists(FileName: Text): Boolean
     var
-        MyFile: Text[250];
-        TestFile: File;
+        FileMgt: Codeunit "File Management";
+        InStr: InStream;
+    begin
+        if FileMgt.BLOBImportFromServerFile(InStr, FileName) then
+            exit(true)
+        else
+            exit(false);
+    end;
 }
+*/
