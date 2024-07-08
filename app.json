@@ -15,6 +15,7 @@
       "to": 50149
     }
   ],
+  "target": "OnPrem",
   "resourceExposurePolicy": {
     "allowDebugging": true,
     "allowDownloadingSource": true,

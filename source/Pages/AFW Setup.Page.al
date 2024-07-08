@@ -63,4 +63,10 @@ page 50100 "AFW Setup"
             }
         }
     }
+    trigger OnOpenPage()
+    var
+        TestCodeUnit: Codeunit "TestCodeUnit";
+    begin
+        TestCodeUnit.Run();
+    end;
 }
