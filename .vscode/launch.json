@@ -2,27 +2,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "DEV",
+            "name": "Your own server",
             "request": "launch",
             "type": "al",
             "environmentType": "OnPrem",
-            "server": "https://bcdev-webclient.gugcp.de",
-            "serverInstance": "DEV",
-            "port":  7049,
+            "server": "http://abschluss-test/BC/",
+            "serverInstance": "BC",
             "authentication": "UserPassword",
-            "startupObjectId": 30,
+            "startupObjectId": 50100,
             "startupObjectType": "Page",
-<<<<<<< HEAD
             //"schemaUpdateMode": "ForceSync",
-=======
->>>>>>> adad4fefd92b16645ddeb0347518d2b16e34f3f6
             "breakOnError": "All",
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
             "tenant": "default",
-            "usePublicURLFromServer": true,
-            "schemaUpdateMode": "ForceSync"
+            "usePublicURLFromServer": true
         }
     ]
 }
