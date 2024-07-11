@@ -15,58 +15,35 @@ page 50100 "AFW Setup"
         {
             group(General)
             {
-                Caption = 'General Settings';
+                Caption = 'General Settings', Comment = 'DEU="Allgemeine Einstellungen"';
 
                 field("Enable Monitoring"; Rec."Enable Monitoring")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Globally enable or disable monitoring.';
+                    ToolTip = 'Globally enable or disable monitoring.', Comment = 'DEU="Überwachung global aktivieren oder deaktivieren."';
                     Editable = true;
                 }
                 field("Enable Logging"; Rec."Enable Logging")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Enable or disable logging of events.';
+                    ToolTip = 'Enable or disable logging of events.', Comment = 'DEU="Protokollierung von Ereignissen aktivieren oder deaktivieren."';
                     Editable = true;
                 }
                 field("Log File Path"; Rec."Log File Path")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specify the path where the log files should be stored.';
+                    ToolTip = 'Specify the path where the log files should be stored.', Comment = 'DEU="Geben Sie den Pfad an, in dem die Protokolldateien gespeichert werden sollen."';
                     Editable = true;
                 }
             }
         }
-
-        area(factboxes)
-        {
-            // Optional: Add additional FactBoxes here
-        }
-    }
-
-    actions
-    {
-        area(processing)
-        {
-            action("Test Settings")
-            {
-                Caption = 'Test Settings';
-                ApplicationArea = All;
-                ToolTip = 'Test the current settings to ensure they are correct.';
-                Image = TestDatabase;
-
-                trigger OnAction()
-                begin
-                    // Add code to test the settings
-                    Message('Settings are correct.');
-                end;
-            }
-        }
     }
     trigger OnOpenPage()
-    var
-        TestCodeUnit: Codeunit "TestCodeUnit";
     begin
-        TestCodeUnit.Run();
+        if not Rec.Get() then begin
+            Rec.Init();
+            Rec."Primary Key" := '';
+            Rec.Insert(true);
+        end;
     end;
 }
