@@ -4,10 +4,11 @@ page 50100 "AFW Setup"
     UsageCategory = Administration;
     SourceTable = "AFW Settings";
     ApplicationArea = All;
-    Caption = 'AFW Setup';
+    Caption = 'AFW Setup', Comment = 'DEU="AFW Einrichtung"';
     InsertAllowed = false;
     DeleteAllowed = false;
     ModifyAllowed = true;
+    Editable = true;
 
     layout
     {
