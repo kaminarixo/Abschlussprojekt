@@ -8,26 +8,26 @@ table 50100 "AFW Settings"
         field(1; "Primary Key"; Code[10])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Primary key';
-            Description = 'This is the primary key';
+            Caption = 'Primary key', Comment = 'DEU="Primärschlüssel"';
+            Description = 'Dies ist der Primärschlüssel.';
         }
         field(2; "Enable Monitoring"; Boolean)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Enable Monitoring';
-            Description = 'A switch to globally enable or disable monitoring.';
+            Caption = 'Enable Monitoring', Comment = 'DEU="Überwachung aktivieren"';
+            Description = 'Ein Schalter, um die Überwachung global zu aktivieren oder zu deaktivieren.';
         }
         field(3; "Enable Logging"; Boolean)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Enable Logging';
-            Description = 'A switch to enable or disable logging of events.';
+            Caption = 'Enable Logging', Comment = 'DEU="Protokollierung aktivieren"';
+            Description = 'Ein Schalter, um die Protokollierung von Ereignissen zu aktivieren oder zu deaktivieren.';
         }
         field(4; "Log File Path"; Text[250])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Log File Path';
-            Description = 'The path where the log files should be stored.';
+            Caption = 'Log File Path', Comment = 'DEU="Protokolldateipfad"';
+            Description = 'Der Pfad, in dem die Protokolldateien gespeichert werden sollen.';
         }
     }
 
