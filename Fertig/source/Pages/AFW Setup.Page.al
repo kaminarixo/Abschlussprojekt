@@ -23,6 +23,7 @@ page 50100 "AFW Setup"
                     ApplicationArea = All;
                     ToolTip = 'Globally enable or disable monitoring.', Comment = 'DEU="Überwachung global aktivieren oder deaktivieren."';
                     Editable = true;
+
                 }
                 field("Enable Logging"; Rec."Enable Logging")
                 {

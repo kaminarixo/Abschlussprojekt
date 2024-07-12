@@ -1,7 +1,6 @@
 page 50103 "AFW Job Card"
 {
     PageType = Card;
-    UsageCategory = Tasks;
     SourceTable = "AFW Jobs";
     ApplicationArea = All;
     Caption = 'AFW Job Creation', Comment = 'DEU="AFW Job Erstellung"';
@@ -10,15 +9,9 @@ page 50103 "AFW Job Card"
     {
         area(content)
         {
-            group(General)
+            group(JobInformation)
             {
-                Caption = 'General', Comment = 'DEU="Allgemein"';
-
-                field("Primary Key"; Rec."Primary Key")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specify the primary key of the job.', Comment = 'DEU="Geben Sie den Primärschlüssel des Jobs an."';
-                }
+                Caption = 'Job Information', Comment = 'DEU="Job-Informationen"';
                 field("Job Name"; Rec."Job Name")
                 {
                     ApplicationArea = All;
@@ -28,17 +21,27 @@ page 50103 "AFW Job Card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'The current status of the job.', Comment = 'DEU="Der aktuelle Status des Jobs."';
+                    Editable = false;
                 }
+            }
+            group(MonitoringDetails)
+            {
+                Caption = 'Monitoring Details', Comment = 'DEU="Überwachungsdetails"';
                 field("Folder Path"; Rec."Folder Path")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specify the path of the folder to be monitored.', Comment = 'DEU="Geben Sie den Pfad des zu überwachenden Ordners an."';
+                    NotBlank = true;
                 }
                 field("File Types"; Rec."File Types")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specify the file types to be monitored. Leave empty to monitor all file types.', Comment = 'DEU="Geben Sie die zu überwachenden Dateitypen an. Lassen Sie das Feld leer, um alle Dateitypen zu überwachen."';
                 }
+            }
+            group(NotificationSettings)
+            {
+                Caption = 'Notification Settings', Comment = 'DEU="Benachrichtigungseinstellungen"';
                 field("Email Recipient"; Rec."Email Recipient")
                 {
                     ApplicationArea = All;

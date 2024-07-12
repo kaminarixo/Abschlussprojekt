@@ -9,7 +9,7 @@
             "server": "http://abschluss-test/BC/",
             "serverInstance": "BC",
             "authentication": "UserPassword",
-            "startupObjectId": 50100,
+            "startupObjectId": 50101,
             "startupObjectType": "Page",
             "schemaUpdateMode": "ForceSync",
             "breakOnError": "All",

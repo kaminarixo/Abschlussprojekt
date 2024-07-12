@@ -1,29 +1,29 @@
-enum 50102 "AFW File Types"
+enum 50101 "AFW File Types"
 {
     Extensible = true;
-
+    Caption = 'AFW File Types', Comment = 'DEU="AFW Dateitypen"';
     value(0; "All")
     {
         Caption = 'All';
     }
     value(1; "PDF")
     {
-        Caption = 'PDF';
+        Caption = '.pdf';
     }
     value(2; "DOCX")
     {
-        Caption = 'DOCX';
+        Caption = '.docx';
     }
     value(3; "XLSX")
     {
-        Caption = 'XLSX';
+        Caption = '.xlsx';
     }
     value(4; "TXT")
     {
-        Caption = 'TXT';
+        Caption = '.txt';
     }
     value(5; "CSV")
     {
-        Caption = 'CSV';
+        Caption = '.csv';
     }
 }

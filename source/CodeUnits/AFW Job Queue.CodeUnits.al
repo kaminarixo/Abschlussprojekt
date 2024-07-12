@@ -1,3 +1,4 @@
+/*
 codeunit 50102 "AFW Job Queue"
 {
     Subtype = Normal;
@@ -38,3 +39,4 @@ codeunit 50102 "AFW Job Queue"
         ScheduleJob();
     end;
 }
+*/

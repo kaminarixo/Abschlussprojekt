@@ -6,6 +6,9 @@ page 50101 "AFW Job List"
     ApplicationArea = All;
     Caption = 'AFW Job List', Comment = 'DEU="AFW Job Liste"';
     CardPageId = "AFW Job Card";
+    InsertAllowed = true;
+    ModifyAllowed = false;
+    DeleteAllowed = false;
 
     layout
     {
@@ -14,7 +17,6 @@ page 50101 "AFW Job List"
             repeater(General)
             {
                 Caption = 'General', Comment = 'DEU="Allgemein"';
-
                 field("Primary Key"; Rec."Primary Key")
                 {
                     ApplicationArea = All;
@@ -48,7 +50,7 @@ page 50101 "AFW Job List"
                 field("Monitoring Interval"; Rec."Monitoring Interval")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies the interval at which the folder should be monitored.', Comment = 'DEU="Gibt das Intervall an, in dem der Ordner überwacht werden soll."';
+                    ToolTip = 'Specifies the interval at which the folder should be monitored.', Comment = 'DEU="Das Intervall, in dem der Ordner überwacht wird, in Minuten."';
                 }
                 field("Minutes Between Emails"; Rec."Minutes Between Emails")
                 {

@@ -15,8 +15,9 @@ table 50101 "AFW Jobs"
             DataClassification = ToBeClassified;
             Caption = 'Job Name', Comment = 'DEU="Jobname"';
             Description = 'Der Name des Jobs';
+
         }
-        field(3; "Status"; Enum "AFW File Status")
+        field(3; "Status"; Enum "AFW Job Status")
         {
             DataClassification = ToBeClassified;
             Caption = 'Status', Comment = 'DEU="Status"';
@@ -27,12 +28,14 @@ table 50101 "AFW Jobs"
             DataClassification = ToBeClassified;
             Caption = 'Folder Path', Comment = 'DEU="Ordnerpfad"';
             Description = 'Der Pfad des Ordners, der überwacht wird';
+
         }
         field(5; "File Types"; Enum "AFW File Types")
         {
             DataClassification = ToBeClassified;
             Caption = 'File Types', Comment = 'DEU="Dateitypen"';
             Description = 'Die Dateitypen, die im Ordner überwacht werden';
+
         }
         field(6; "Email Recipient"; Text[250])
         {
@@ -40,18 +43,21 @@ table 50101 "AFW Jobs"
             Caption = 'Email Recipient', Comment = 'DEU="E-Mail-Empfänger"';
             ExtendedDatatype = EMail;
             Description = 'Die E-Mail-Adresse des Empfängers für Benachrichtigungen';
+
         }
-        field(7; "Monitoring Interval"; Enum "AFW Monitoring Interval")
+        field(7; "Monitoring Interval"; Integer)
         {
             DataClassification = ToBeClassified;
             Caption = 'Monitoring Interval', Comment = 'DEU="Überwachungsintervall"';
-            Description = 'Das Intervall, in dem der Ordner überwacht wird';
+            Description = 'Das Intervall, in dem der Ordner überwacht wird, in Minuten.';
+
         }
         field(8; "Minutes Between Emails"; Integer)
         {
             DataClassification = ToBeClassified;
             Caption = 'Minutes Between Emails', Comment = 'DEU="Minuten zwischen E-Mails"';
             Description = 'Die Anzahl der Minuten, die zwischen dem Senden von E-Mails bei einem Fehler gewartet werden soll';
+
         }
     }
 
@@ -62,20 +68,21 @@ table 50101 "AFW Jobs"
             Clustered = true;
         }
     }
-
-    var
-        LastPrimaryKey: Code[10];
-
     trigger OnInsert()
     var
-        AFWFiles: Record "AFW Jobs";
+        LastPrimaryKey: Code[10];
+        AFWJobs: Record "AFW Jobs";
     begin
-        if "Primary Key" = '' then begin
-            AFWFiles.SetCurrentKey("Primary Key");
-            AFWFiles.SetAscending("Primary Key", true);
-            if AFWFiles.FindLast() then
-                LastPrimaryKey := AFWFiles."Primary Key";
-            "Primary Key" := IncStr(LastPrimaryKey);
-        end;
+        If AFWJobs.Count() = 0 then
+            Rec."Primary Key" := '1'
+        else
+            If Rec."Primary Key" = '' then begin
+                AFWJobs.SetCurrentKey("Primary Key");
+                AFWJobs.SetAscending("Primary Key", true);
+                if AFWJobs.FindLast() then
+                    LastPrimaryKey := AFWJobs."Primary Key";
+                Rec."Primary Key" := IncStr(LastPrimaryKey);
+            end;
+
     end;
 }

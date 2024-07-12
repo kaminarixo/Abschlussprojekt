@@ -1,3 +1,4 @@
+/*
 codeunit 50100 "AFW File Monitor"
 {
     SingleInstance = true;
@@ -118,4 +119,4 @@ codeunit 50100 "AFW File Monitor"
         // Call AFW_Alert_Sender to send email notification
         Codeunit.Run(Codeunit::"AFW Alert Sender", AFWAlertRec);
     end;
-}
+}*/
