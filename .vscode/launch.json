@@ -11,7 +11,7 @@
             "authentication": "UserPassword",
             "startupObjectId": 50100,
             "startupObjectType": "Page",
-            //"schemaUpdateMode": "ForceSync",
+            "schemaUpdateMode": "ForceSync",
             "breakOnError": "All",
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,

@@ -2,9 +2,9 @@ page 50103 "AFW Job Card"
 {
     PageType = Card;
     UsageCategory = Tasks;
-    SourceTable = "AFW Files";
+    SourceTable = "AFW Jobs";
     ApplicationArea = All;
-    Caption = 'AFW Job Creation';
+    Caption = 'AFW Job Creation', Comment = 'DEU="AFW Job Erstellung"';
 
     layout
     {
@@ -12,42 +12,47 @@ page 50103 "AFW Job Card"
         {
             group(General)
             {
-                Caption = 'General';
+                Caption = 'General', Comment = 'DEU="Allgemein"';
 
-                field("File Name"; Rec."File Name")
+                field("Primary Key"; Rec."Primary Key")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specify the name of the file.';
+                    ToolTip = 'Specify the primary key of the job.', Comment = 'DEU="Geben Sie den Primärschlüssel des Jobs an."';
                 }
-                field("Creation Date"; Rec."Creation Date")
+                field("Job Name"; Rec."Job Name")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'The date and time when the file was created.';
+                    ToolTip = 'Specify the name of the job.', Comment = 'DEU="Geben Sie den Namen des Jobs an."';
                 }
-                field("Status"; Rec.Status)
+                field("Status"; Rec."Status")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'The current status of the job.';
+                    ToolTip = 'The current status of the job.', Comment = 'DEU="Der aktuelle Status des Jobs."';
                 }
                 field("Folder Path"; Rec."Folder Path")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specify the path of the folder to be monitored.';
+                    ToolTip = 'Specify the path of the folder to be monitored.', Comment = 'DEU="Geben Sie den Pfad des zu überwachenden Ordners an."';
                 }
                 field("File Types"; Rec."File Types")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specify the file types to be monitored. Leave empty to monitor all file types.';
+                    ToolTip = 'Specify the file types to be monitored. Leave empty to monitor all file types.', Comment = 'DEU="Geben Sie die zu überwachenden Dateitypen an. Lassen Sie das Feld leer, um alle Dateitypen zu überwachen."';
                 }
                 field("Email Recipient"; Rec."Email Recipient")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specify the email address to send alerts to.';
+                    ToolTip = 'Specify the email address to send alerts to.', Comment = 'DEU="Geben Sie die E-Mail-Adresse an, an die Benachrichtigungen gesendet werden sollen."';
                 }
                 field("Monitoring Interval"; Rec."Monitoring Interval")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specify the interval at which the folder should be monitored.';
+                    ToolTip = 'Specify the interval at which the folder should be monitored.', Comment = 'DEU="Geben Sie das Intervall an, in dem der Ordner überwacht werden soll."';
+                }
+                field("Minutes Between Emails"; Rec."Minutes Between Emails")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specify the number of minutes to wait between sending emails on error.', Comment = 'DEU="Geben Sie die Anzahl der Minuten an, die zwischen dem Senden von E-Mails bei einem Fehler gewartet werden soll."';
                 }
             }
         }

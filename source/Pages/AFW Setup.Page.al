@@ -30,10 +30,10 @@ page 50100 "AFW Setup"
                     ToolTip = 'Enable or disable logging of events.', Comment = 'DEU="Protokollierung von Ereignissen aktivieren oder deaktivieren."';
                     Editable = true;
                 }
-                field("Log File Path"; Rec."Log File Path")
+                field("Sender's Address"; Rec."Sender's Address")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specify the path where the log files should be stored.', Comment = 'DEU="Geben Sie den Pfad an, in dem die Protokolldateien gespeichert werden sollen."';
+                    ToolTip = 'The email address from which to send emails.', Comment = 'DEU="Die E-Mail-Adresse, von der die E-Mails gesendert werden sollen."';
                     Editable = true;
                 }
             }

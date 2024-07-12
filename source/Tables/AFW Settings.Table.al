@@ -23,11 +23,11 @@ table 50100 "AFW Settings"
             Caption = 'Enable Logging', Comment = 'DEU="Protokollierung aktivieren"';
             Description = 'Ein Schalter, um die Protokollierung von Ereignissen zu aktivieren oder zu deaktivieren.';
         }
-        field(4; "Log File Path"; Text[250])
+        field(4; "Sender's Address"; Text[100])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Log File Path', Comment = 'DEU="Protokolldateipfad"';
-            Description = 'Der Pfad, in dem die Protokolldateien gespeichert werden sollen.';
+            Caption = 'Senders Address', Comment = 'DEU="Absenderadresse"';
+            Description = 'Die E-Mail-Adresse, von der die E-Mails gesendert werden sollen.';
         }
     }
 
