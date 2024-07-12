@@ -23,11 +23,20 @@ table 50100 "AFW Settings"
             Caption = 'Enable Logging', Comment = 'DEU="Protokollierung aktivieren"';
             Description = 'Ein Schalter, um die Protokollierung von Ereignissen zu aktivieren oder zu deaktivieren.';
         }
-        field(4; "Sender's Address"; Text[100])
+        field(4; "Sender's Address"; Text[250])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Senders Address', Comment = 'DEU="Absenderadresse"';
-            Description = 'Die E-Mail-Adresse, von der die E-Mails gesendert werden sollen.';
+            Caption = 'Sender''s Address', Comment = 'DEU="Absenderadresse"';
+            Description = 'Die E-Mail-Adresse, von der die E-Mails gesendet werden sollen.';
+
+            trigger OnLookup()
+            var
+                EmailAccountVar: Record "Email Account";
+            begin
+                EmailAccountVar.Reset();
+                if Page.RunModal(Page::"Email Accounts", EmailAccountVar) = Action::LookupOK then
+                    "Sender's Address" := EmailAccountVar."Email Address";
+            end;
         }
     }
 

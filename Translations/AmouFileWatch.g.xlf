@@ -79,7 +79,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Settings - Field Primary Key - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 439477519 - Field 2106217075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Senders Address</source>
+          <source>Sender's Address</source>
           <note from="Developer" annotates="general" priority="2">DEU="Absenderadresse"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Settings - Field Sender's Address - Property Caption</note>
         </trans-unit>
