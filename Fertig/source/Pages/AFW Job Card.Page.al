@@ -4,7 +4,6 @@ page 50103 "AFW Job Card"
     SourceTable = "AFW Jobs";
     ApplicationArea = All;
     Caption = 'AFW Job Creation', Comment = 'DEU="AFW Job Erstellung"';
-
     layout
     {
         area(content)

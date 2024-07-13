@@ -26,7 +26,6 @@ table 50101 "AFW Jobs"
         field(4; "Folder Path"; Text[250])
         {
             DataClassification = ToBeClassified;
-            ExtendedDatatype = URL;
             Caption = 'Folder Path', Comment = 'DEU="Ordnerpfad"';
             Description = 'Der Pfad des Ordners, der überwacht wird';
         }
