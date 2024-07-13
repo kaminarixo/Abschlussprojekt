@@ -11,4 +11,12 @@ enum 50100 "AFW Job Status"
     {
         Caption = 'In Progress', Comment = 'DEU="In Bearbeitung"';
     }
+    value(2; Stopped)
+    {
+        Caption = 'Stopped', Comment = 'DEU="Gestoppt"';
+    }
+    value(3; Error)
+    {
+        Caption = 'Error', Comment = 'DEU="Fehler"';
+    }
 }

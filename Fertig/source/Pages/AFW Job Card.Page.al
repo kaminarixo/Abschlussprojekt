@@ -16,6 +16,7 @@ page 50103 "AFW Job Card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specify the name of the job.', Comment = 'DEU="Geben Sie den Namen des Jobs an."';
+                    NotBlank = true;
                 }
                 field("Status"; Rec."Status")
                 {
@@ -46,17 +47,21 @@ page 50103 "AFW Job Card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specify the email address to send alerts to.', Comment = 'DEU="Geben Sie die E-Mail-Adresse an, an die Benachrichtigungen gesendet werden sollen."';
+                    NotBlank = true;
                 }
                 field("Monitoring Interval"; Rec."Monitoring Interval")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specify the interval at which the folder should be monitored.', Comment = 'DEU="Geben Sie das Intervall an, in dem der Ordner überwacht werden soll."';
+                    NotBlank = true;
                 }
                 field("Minutes Between Emails"; Rec."Minutes Between Emails")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specify the number of minutes to wait between sending emails on error.', Comment = 'DEU="Geben Sie die Anzahl der Minuten an, die zwischen dem Senden von E-Mails bei einem Fehler gewartet werden soll."';
+                    NotBlank = true;
                 }
+
             }
         }
     }

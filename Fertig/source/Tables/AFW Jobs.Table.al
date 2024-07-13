@@ -1,3 +1,12 @@
+dotnet
+{
+    assembly("System.Windows.Forms")
+    {
+        Version = '6.0.0.0';
+        Culture = 'neutral';
+        PublicKeyToken = 'b77a5c561934e089';
+    }
+}
 table 50101 "AFW Jobs"
 {
     DataClassification = ToBeClassified;
@@ -26,9 +35,9 @@ table 50101 "AFW Jobs"
         field(4; "Folder Path"; Text[250])
         {
             DataClassification = ToBeClassified;
+            ExtendedDatatype = URL;
             Caption = 'Folder Path', Comment = 'DEU="Ordnerpfad"';
             Description = 'Der Pfad des Ordners, der überwacht wird';
-
         }
         field(5; "File Types"; Enum "AFW File Types")
         {

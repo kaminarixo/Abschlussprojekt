@@ -235,7 +235,7 @@
         </trans-unit>
         <trans-unit id="Enum 1491221199 - EnumValue 3703598467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>All</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">DEU="Alle"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum AFW File Types - EnumValue All - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1491221199 - EnumValue 487643378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -268,6 +268,11 @@
           <note from="Developer" annotates="general" priority="2">DEU="AFW Job Status"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum AFW Job Status - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 974612917 - EnumValue 2248886284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Error</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Fehler"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AFW Job Status - EnumValue Error - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 974612917 - EnumValue 356416822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>In Progress</source>
           <note from="Developer" annotates="general" priority="2">DEU="In Bearbeitung"</note>
@@ -277,6 +282,11 @@
           <source>Ready</source>
           <note from="Developer" annotates="general" priority="2">DEU="Bereit"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum AFW Job Status - EnumValue Ready - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 974612917 - EnumValue 1092494051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Stopped</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Gestoppt"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AFW Job Status - EnumValue Stopped - Property Caption</note>
         </trans-unit>
       </group>
     </body>

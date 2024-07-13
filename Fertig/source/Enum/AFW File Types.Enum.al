@@ -4,7 +4,7 @@ enum 50101 "AFW File Types"
     Caption = 'AFW File Types', Comment = 'DEU="AFW Dateitypen"';
     value(0; "All")
     {
-        Caption = 'All';
+        Caption = 'All', Comment = 'DEU="Alle"';
     }
     value(1; "PDF")
     {
