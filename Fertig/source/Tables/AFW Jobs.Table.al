@@ -1,12 +1,3 @@
-dotnet
-{
-    assembly("System.Windows.Forms")
-    {
-        Version = '6.0.0.0';
-        Culture = 'neutral';
-        PublicKeyToken = 'b77a5c561934e089';
-    }
-}
 table 50101 "AFW Jobs"
 {
     DataClassification = ToBeClassified;
