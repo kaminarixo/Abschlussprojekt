@@ -63,25 +63,30 @@
           <note from="Developer" annotates="general" priority="2">DEU="Status"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Jobs - Field Status - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 439477519 - Field 1451063990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 273126673 - Field 1451063990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enable Logging</source>
           <note from="Developer" annotates="general" priority="2">DEU="Protokollierung aktivieren"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Settings - Field Enable Logging - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Enable Logging - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 439477519 - Field 2607589527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 273126673 - Field 2607589527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enable Monitoring</source>
           <note from="Developer" annotates="general" priority="2">DEU="Überwachung aktivieren"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Settings - Field Enable Monitoring - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Enable Monitoring - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 439477519 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 273126673 - Field 3009152865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log File Path</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Protokolldateipfad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Log File Path - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 273126673 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary key</source>
           <note from="Developer" annotates="general" priority="2">DEU="Primärschlüssel"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Settings - Field Primary Key - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Primary Key - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 439477519 - Field 2106217075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 273126673 - Field 2106217075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sender's Address</source>
           <note from="Developer" annotates="general" priority="2">DEU="Absenderadresse"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Settings - Field Sender's Address - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Sender's Address - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1199857104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AmouFileWatch Alert List</source>
@@ -145,7 +150,7 @@
         </trans-unit>
         <trans-unit id="Page 1084499733 - Control 2670659661 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specify the interval at which the folder should be monitored.</source>
-          <note from="Developer" annotates="general" priority="2">DEU="Geben Sie das Intervall an, in dem der Ordner überwacht werden soll."</note>
+          <note from="Developer" annotates="general" priority="2">DEU="Geben Sie das Intervall an, in welchem der Ordner überwacht werden soll."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job Card - Control Monitoring Interval - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1831751231 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -218,6 +223,11 @@
           <note from="Developer" annotates="general" priority="2">DEU="Überwachung global aktivieren oder deaktivieren."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control Enable Monitoring - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 273126673 - Control 3009152865 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specify the path where the log files should be stored.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Geben Sie den Pfad an, in dem die Protokolldateien gespeichert werden sollen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control Log File Path - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 273126673 - Control 2106217075 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>The email address from which to send emails.</source>
           <note from="Developer" annotates="general" priority="2">DEU="Die E-Mail-Adresse, von der die E-Mails gesendert werden sollen."</note>
@@ -277,6 +287,11 @@
           <source>In Progress</source>
           <note from="Developer" annotates="general" priority="2">DEU="In Bearbeitung"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum AFW Job Status - EnumValue InProgress - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 974612917 - EnumValue 3159279042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Not Ready</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Nicht Bereit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum AFW Job Status - EnumValue NotReady - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 974612917 - EnumValue 2521603205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ready</source>

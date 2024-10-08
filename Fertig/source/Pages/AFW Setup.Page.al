@@ -1,8 +1,9 @@
+
 page 50100 "AFW Setup"
 {
     PageType = Card;
     UsageCategory = Administration;
-    SourceTable = "AFW Settings";
+    SourceTable = "AFW Setup";
     ApplicationArea = All;
     Caption = 'AFW Setup', Comment = 'DEU="AFW Einrichtung"';
     InsertAllowed = false;
@@ -23,7 +24,6 @@ page 50100 "AFW Setup"
                     ApplicationArea = All;
                     ToolTip = 'Globally enable or disable monitoring.', Comment = 'DEU="Überwachung global aktivieren oder deaktivieren."';
                     Editable = true;
-
                 }
                 field("Enable Logging"; Rec."Enable Logging")
                 {
@@ -35,6 +35,12 @@ page 50100 "AFW Setup"
                 {
                     ApplicationArea = All;
                     ToolTip = 'The email address from which to send emails.', Comment = 'DEU="Die E-Mail-Adresse, von der die E-Mails gesendert werden sollen."';
+                    Editable = true;
+                }
+                field("Log File Path"; Rec."Log File Path")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specify the path where the log files should be stored.', Comment = 'DEU="Geben Sie den Pfad an, in dem die Protokolldateien gespeichert werden sollen."';
                     Editable = true;
                 }
             }

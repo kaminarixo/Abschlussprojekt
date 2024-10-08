@@ -1,4 +1,4 @@
-table 50100 "AFW Settings"
+table 50100 "AFW Setup"
 {
     DataClassification = ToBeClassified;
     DataPerCompany = false;
@@ -37,6 +37,12 @@ table 50100 "AFW Settings"
                 if Page.RunModal(Page::"Email Accounts", EmailAccountVar) = Action::LookupOK then
                     "Sender's Address" := EmailAccountVar."Email Address";
             end;
+        }
+        field(5; "Log File Path"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Log File Path', Comment = 'DEU="Protokolldateipfad"';
+            Description = 'Der Pfad, in dem die Protokolldateien gespeichert werden sollen.';
         }
     }
 

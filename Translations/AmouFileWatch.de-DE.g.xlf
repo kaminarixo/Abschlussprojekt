@@ -71,29 +71,35 @@
           <note from="Developer" annotates="general" priority="2">DEU="Status"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Jobs - Field Status - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 439477519 - Field 1451063990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 273126673 - Field 1451063990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enable Logging</source>
           <target state="translated">Protokollierung aktivieren</target>
           <note from="Developer" annotates="general" priority="2">DEU="Protokollierung aktivieren"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Settings - Field Enable Logging - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Enable Logging - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 439477519 - Field 2607589527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 273126673 - Field 2607589527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enable Monitoring</source>
           <target state="translated">Überwachung aktivieren</target>
           <note from="Developer" annotates="general" priority="2">DEU="Überwachung aktivieren"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Settings - Field Enable Monitoring - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Enable Monitoring - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 439477519 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 273126673 - Field 3009152865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Log File Path</source>
+          <target state="translated">Protokolldateipfad</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Protokolldateipfad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Log File Path - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 273126673 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary key</source>
           <target state="translated">Primärschlüssel</target>
           <note from="Developer" annotates="general" priority="2">DEU="Primärschlüssel"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Settings - Field Primary Key - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Primary Key - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 439477519 - Field 2106217075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 273126673 - Field 2106217075 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sender's Address</source>
           <target state="translated">Absenderadresse</target>
           <note from="Developer" annotates="general" priority="2">DEU="Absenderadresse"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Settings - Field Sender's Address - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Sender's Address - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1199857104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AmouFileWatch Alert List</source>

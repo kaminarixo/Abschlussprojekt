@@ -51,7 +51,7 @@ page 50103 "AFW Job Card"
                 field("Monitoring Interval"; Rec."Monitoring Interval")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specify the interval at which the folder should be monitored.', Comment = 'DEU="Geben Sie das Intervall an, in dem der Ordner überwacht werden soll."';
+                    ToolTip = 'Specify the interval at which the folder should be monitored.', Comment = 'DEU="Geben Sie das Intervall an, in welchem der Ordner überwacht werden soll."';
                     NotBlank = true;
                 }
                 field("Minutes Between Emails"; Rec."Minutes Between Emails")
