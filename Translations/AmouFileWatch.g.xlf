@@ -3,10 +3,25 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="AmouFileWatch">
     <body>
       <group id="body">
+        <trans-unit id="Table 1235994815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AFW Alerts</source>
+          <note from="Developer" annotates="general" priority="2">DEU="AFW Meldungen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Alerts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1235994815 - Field 3477674087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Alert Message</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Alarmnachricht"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Alerts - Field Alert Message - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1235994815 - Field 3902649412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Alert Timestamp</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">DEU="Alarmzeitstempel"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Alerts - Field Alert Timestamp - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1235994815 - Field 3377584293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>File ID</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Datei-ID"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Alerts - Field File ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1235994815 - Field 804481195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>File Name</source>
@@ -15,12 +30,12 @@
         </trans-unit>
         <trans-unit id="Table 1235994815 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary key</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">DEU="Primärschlüssel"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Alerts - Field Primary Key - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1235994815 - Field 400074693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Recipient</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">DEU="Empfänger"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Alerts - Field Recipient - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2365935200 - Field 474016873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -89,13 +104,58 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Sender's Address - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1199857104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>AmouFileWatch Alert List</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>AFW Alert List</source>
+          <note from="Developer" annotates="general" priority="2">DEU="AFW Meldungsliste"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1199857104 - Control 3477674087 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the message that describes the alert.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Gibt die Nachricht an, die den Alarm beschreibt."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Control Alert Message - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1199857104 - Control 3477674087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Alert Message</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Alarmnachricht"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Control Alert Message - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1199857104 - Control 3902649412 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the timestamp when the alert was triggered.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Gibt den Zeitstempel an, wann der Alarm ausgelöst wurde."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Control Alert Timestamp - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1199857104 - Control 3902649412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Alert Timestamp</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Alarmzeitstempel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Control Alert Timestamp - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1199857104 - Control 804481195 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the file that triggered the alert.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Gibt den Namen der Datei an, die den Alarm ausgelöst hat."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Control File Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1199857104 - Control 804481195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>File Name</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Dateiname"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Control File Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1199857104 - Control 400074693 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the email address of the recipient for the alert.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Gibt die E-Mail-Adresse des Empfängers für den Alarm an."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Control Recipient - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1199857104 - Control 400074693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Recipient</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Empfänger"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Control Recipient - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1199857104 - Action 1006324017 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refreshes the list of alerts.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Aktualisiert die Liste der Alarme."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Action Refresh List - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1199857104 - Action 1006324017 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Refresh List</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">DEU="Liste aktualisieren"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Action Refresh List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1084499733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">

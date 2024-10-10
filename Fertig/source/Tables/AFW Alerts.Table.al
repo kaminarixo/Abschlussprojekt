@@ -38,6 +38,7 @@ table 50102 "AFW Alerts"
         field(6; "File Name"; Text[100])
         {
             DataClassification = ToBeClassified;
+            Description = 'Der Name der Datei, bei der es einen Fehler gab';
         }
     }
 
