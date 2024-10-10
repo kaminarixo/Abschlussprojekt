@@ -1,3 +1,4 @@
+/*
 codeunit 50149 TestCodeUnit
 {
 
@@ -22,3 +23,4 @@ codeunit 50149 TestCodeUnit
             Message('Datei existiert nicht.');
     end;
 }
+*/

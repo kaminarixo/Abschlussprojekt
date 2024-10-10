@@ -88,6 +88,16 @@
           <note from="Developer" annotates="general" priority="2">DEU="Überwachung aktivieren"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Enable Monitoring - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 273126673 - Field 1757883032 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Error Email Body</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Fehler-E-Mail-Body"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Error Email Body - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 273126673 - Field 1689582310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Info Email Body</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Info-E-Mail-Body"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Info Email Body - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 273126673 - Field 3009152865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Log File Path</source>
           <note from="Developer" annotates="general" priority="2">DEU="Protokolldateipfad"</note>
@@ -102,6 +112,11 @@
           <source>Sender's Address</source>
           <note from="Developer" annotates="general" priority="2">DEU="Absenderadresse"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Sender's Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 273126673 - Field 3021345882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warning Email Body</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Warnung-E-Mail-Body"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Warning Email Body - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1199857104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AFW Alert List</source>
@@ -268,6 +283,41 @@
           <note from="Developer" annotates="general" priority="2">DEU="AFW Einrichtung"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 273126673 - Control 3129275966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email Bodies</source>
+          <note from="Developer" annotates="general" priority="2">DEU="E-Mail-Bodys"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control EmailBodies - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Control 3449136632 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The body of the email for error messages.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Der Body der E-Mail für Fehlermeldungen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control ErrorEmailBody - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Control 3449136632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Error Email Body</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Fehler-E-Mail-Body"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control ErrorEmailBody - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Control 1208882822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The body of the email for informational messages.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Der Body der E-Mail für Informationsmeldungen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control InfoEmailBody - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Control 1208882822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Info Email Body</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Info-E-Mail-Body"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control InfoEmailBody - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Control 5608282 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The body of the email for warning messages.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Der Body der E-Mail für Warnmeldungen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control WarningEmailBody - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Control 5608282 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warning Email Body</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Warnung-E-Mail-Body"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control WarningEmailBody - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 273126673 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General Settings</source>
           <note from="Developer" annotates="general" priority="2">DEU="Allgemeine Einstellungen"</note>
@@ -290,8 +340,43 @@
         </trans-unit>
         <trans-unit id="Page 273126673 - Control 2106217075 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>The email address from which to send emails.</source>
-          <note from="Developer" annotates="general" priority="2">DEU="Die E-Mail-Adresse, von der die E-Mails gesendert werden sollen."</note>
+          <note from="Developer" annotates="general" priority="2">DEU="Die E-Mail-Adresse, von der die E-Mails gesendet werden sollen."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control Sender's Address - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Action 1689517202 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send a test email to verify the sender's address.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Senden Sie eine Test-E-Mail, um die Absenderadresse zu überprüfen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action PfadTesten - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Action 1689517202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pfad teisten</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Pfad testen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action PfadTesten - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Action 1285001562 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send a test email to verify the sender's address.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Senden Sie eine Test-E-Mail, um die Absenderadresse zu überprüfen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action SendTestEmail - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Action 1285001562 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send Test Email</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Test-E-Mail senden"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action SendTestEmail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1161460051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Enter Recipient Email Address</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Empfänger-E-Mail-Adresse eingeben"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Email Input Page - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1161460051 - Control 3190509015 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Enter the email address of the recipient.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Geben Sie die E-Mail-Adresse des Empfängers ein."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Email Input Page - Control RecipientAddress - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1161460051 - Control 3190509015 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Recipient Email Address</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Empfänger-E-Mail-Adresse"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Email Input Page - Control RecipientAddress - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2249230884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AFW Alert Report</source>

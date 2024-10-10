@@ -16,12 +16,36 @@ table 50100 "AFW Setup"
             DataClassification = ToBeClassified;
             Caption = 'Enable Monitoring', Comment = 'DEU="Überwachung aktivieren"';
             Description = 'Ein Schalter, um die Überwachung global zu aktivieren oder zu deaktivieren.';
+            trigger OnValidate()
+            var
+                AFWFunctions: Codeunit "AFW Functions";
+            begin
+                if not Rec."Enable Monitoring" then begin
+                    if not AFWFunctions.ConfirmDeactivation(Rec) then begin
+                        Message('Aktion abgebrochen.');
+                        "Enable Monitoring" := true;
+                    end else
+                        AFWFunctions.StopMonitoringJobs();
+                end else
+                    AFWFunctions.StartMonitoringJobs();
+            end;
         }
         field(3; "Enable Logging"; Boolean)
         {
             DataClassification = ToBeClassified;
             Caption = 'Enable Logging', Comment = 'DEU="Protokollierung aktivieren"';
             Description = 'Ein Schalter, um die Protokollierung von Ereignissen zu aktivieren oder zu deaktivieren.';
+            trigger OnValidate()
+            var
+                AFWFunctions: Codeunit "AFW Functions";
+            begin
+                If Rec."Enable Logging" = false then
+                    if not AFWFunctions.ConfirmDeactivation(Rec) then begin
+                        Message('Aktion abgebrochen.');
+                        "Enable Logging" := true;
+                    end;
+
+            end;
         }
         field(4; "Sender's Address"; Text[250])
         {
@@ -44,6 +68,24 @@ table 50100 "AFW Setup"
             Caption = 'Log File Path', Comment = 'DEU="Protokolldateipfad"';
             Description = 'Der Pfad, in dem die Protokolldateien gespeichert werden sollen.';
         }
+        field(6; "Error Email Body"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Error Email Body', Comment = 'DEU="Fehler-E-Mail-Body"';
+            Description = 'Der E-Mail-Body für Fehlermeldungen.';
+        }
+        field(7; "Warning Email Body"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Warning Email Body', Comment = 'DEU="Warnung-E-Mail-Body"';
+            Description = 'Der E-Mail-Body für Warnmeldungen.';
+        }
+        field(8; "Info Email Body"; Text[250])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Info Email Body', Comment = 'DEU="Info-E-Mail-Body"';
+            Description = 'Der E-Mail-Body für Informationsmeldungen.';
+        }
     }
 
     keys
@@ -53,4 +95,5 @@ table 50100 "AFW Setup"
             Clustered = true;
         }
     }
+
 }
