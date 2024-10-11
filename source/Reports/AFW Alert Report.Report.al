@@ -31,15 +31,15 @@ report 50100 "AFW Alert Report"
         {
             column("File_Name"; "File Name")
             {
-                // Caption kann entfernt werden, da sie veraltet ist
+
             }
             column("Alert_Timestamp"; "Alert Timestamp")
             {
-                // Caption kann entfernt werden, da sie veraltet ist
+
             }
             column("Recipient"; "Recipient")
             {
-                // Caption kann entfernt werden, da sie veraltet ist
+
             }
         }
     }
@@ -76,12 +76,3 @@ report 50100 "AFW Alert Report"
         CompanyInfoVar.CalcFields(Picture);
     end;
 }
-
-/*
-    trigger OnPreReport()
-    begin
-        if FromDate <> 0D then
-            "AFW Alerts".SetRange("Alert Timestamp", CreateDateTime(FromDate, 000000T), CreateDateTime(ToDate, 235959T));
-    end;
-}
-*/

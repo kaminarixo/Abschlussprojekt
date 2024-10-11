@@ -69,19 +69,9 @@ table 50101 "AFW Jobs"
     }
     trigger OnInsert()
     var
-        LastPrimaryKey: Code[10];
-        AFWJobs: Record "AFW Jobs";
+        AFWFunctions: Codeunit "AFW Functions";
     begin
-        If AFWJobs.Count() = 0 then
-            Rec."Primary Key" := '1'
-        else
-            If Rec."Primary Key" = '' then begin
-                AFWJobs.SetCurrentKey("Primary Key");
-                AFWJobs.SetAscending("Primary Key", true);
-                if AFWJobs.FindLast() then
-                    LastPrimaryKey := AFWJobs."Primary Key";
-                Rec."Primary Key" := IncStr(LastPrimaryKey);
-            end;
-
+        if Rec."Primary Key" = '' then
+            Rec."Primary Key" := AFWFunctions.GenerateNextPrimaryKey(Rec);
     end;
 }

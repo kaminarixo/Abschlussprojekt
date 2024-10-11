@@ -17,6 +17,23 @@ codeunit 50100 "AFW Functions"
         end;
     end;
 
+    /// Generiert den nächsten Primärschlüssel für den Job.
+    procedure GenerateNextPrimaryKey(var JobRec: Record "AFW Jobs"): Code[10]
+    var
+        LastPrimaryKey: Code[10];
+        AFWJobs: Record "AFW Jobs";
+    begin
+        if AFWJobs.Count() = 0 then
+            exit('1');
+
+        AFWJobs.SetCurrentKey("Primary Key");
+        AFWJobs.SetAscending("Primary Key", true);
+        if AFWJobs.FindLast() then
+            LastPrimaryKey := AFWJobs."Primary Key";
+
+        exit(IncStr(LastPrimaryKey));
+    end;
+
     // Zeigt einen Bestätigungsdialog an, wenn Überwachung oder Protokollierung deaktiviert werden soll.
     procedure ConfirmDeactivation(SetupRec: Record "AFW Setup"): Boolean
     var
@@ -41,7 +58,7 @@ codeunit 50100 "AFW Functions"
         if Jobs.FindSet() then
             repeat
                 Jobs.Status := StoppedStatus;
-                Jobs.Modify(true);
+                Jobs.Modify();
             until Jobs.Next() = 0;
 
         Message('Alle Überwachungsjobs wurden gestoppt.');
@@ -53,7 +70,7 @@ codeunit 50100 "AFW Functions"
         Jobs: Record "AFW Jobs";
         StartStatus: Enum "AFW Job Status";
     begin
-        // Setze den Status auf "Running"
+        // Setze den Status auf "Ready"
         StartStatus := StartStatus::Ready;
 
         // Finde alle Jobs, die gestoppt sind
@@ -62,7 +79,7 @@ codeunit 50100 "AFW Functions"
         if Jobs.FindSet() then
             repeat
                 Jobs.Status := StartStatus;
-                Jobs.Modify(true);
+                Jobs.Modify();
             until Jobs.Next() = 0;
 
         Message('Alle Überwachungsjobs wurden gestartet.');
