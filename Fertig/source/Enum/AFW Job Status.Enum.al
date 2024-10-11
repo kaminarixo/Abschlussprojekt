@@ -3,13 +3,14 @@ enum 50100 "AFW Job Status"
     Extensible = false;
     Caption = 'AFW Job Status', Comment = 'DEU="AFW Job Status"';
 
-    value(0; Ready)
+    value(0; NotReady)
+    {
+
+        Caption = 'Not Ready', Comment = 'DEU="Nicht Bereit"';
+    }
+    value(1; Ready)
     {
         Caption = 'Ready', Comment = 'DEU="Bereit"';
-    }
-    value(1; NotReady)
-    {
-        Caption = 'Not Ready', Comment = 'DEU="Nicht Bereit"';
     }
     value(2; InProgress)
     {

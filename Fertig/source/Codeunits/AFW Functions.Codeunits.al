@@ -81,11 +81,43 @@ codeunit 50100 "AFW Functions"
     end;
 
     // Pfad überprüfen
-    procedure TestFile(Pfad: Text)
+    procedure CheckPath(Pfad: Text)
     begin
         If File.Exists(Pfad) then begin
             Message('Es wurde folgender Pfad geprüft:\%1\Der Pfad existiert.', Pfad);
         end else
             Message('Es wurde folgender Pfad geprüft:\%1\Der Pfad existiert nicht.', Pfad);
+    end;
+
+    // Überprüft den Job und setzt den Status auf "Ready", wenn alle Einträge korrekt sind.
+    procedure SetJobStatusToReady(var JobRec: Record "AFW Jobs")
+    begin
+        // Überprüfen, ob alle Pflichtfelder ausgefüllt sind
+        if JobRec."Job Name" = '' then
+            Error('Der Jobname darf nicht leer sein.');
+
+        if JobRec."Folder Path" = '' then
+            Error('Der Ordnerpfad darf nicht leer sein.');
+
+        if JobRec."Email Recipient" = '' then
+            Error('Die E-Mail-Adresse des Empfängers darf nicht leer sein.');
+
+        if JobRec."Monitoring Interval" <= 0 then
+            Error('Das Überwachungsintervall muss größer als 0 sein.');
+
+        if JobRec."Minutes Between Emails" <= 0 then
+            Error('Die Anzahl der Minuten zwischen E-Mails muss größer als 0 sein.');
+
+        // Wenn alle Überprüfungen erfolgreich sind, setze den Status auf "Ready"
+        JobRec.Status := JobRec.Status::Ready;
+        JobRec.Modify();
+    end;
+
+    // Setzt den Status des Jobs auf "Stopped".
+    procedure SetJobStatusToStopped(var JobRec: Record "AFW Jobs")
+    begin
+        // Setze den Status auf "Stopped"
+        JobRec.Status := JobRec.Status::Stopped;
+        JobRec.Modify();
     end;
 }

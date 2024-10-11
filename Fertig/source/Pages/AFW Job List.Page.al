@@ -60,4 +60,63 @@ page 50101 "AFW Job List"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action(SetJobToReady)
+            {
+                ApplicationArea = All;
+                Caption = 'Set Job to Ready', Comment = 'DEU="Job auf Ready setzen"';
+                ToolTip = 'Set the job status to Ready if all entries are correct.', Comment = 'DEU="Setze den Jobstatus auf Ready, wenn alle Einträge korrekt sind."';
+                Image = Approve;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    AFWFunctions: Codeunit "AFW Functions";
+                    AFWJobs: Record "AFW Jobs";
+                begin
+                    // Überprüfen, ob ein Eintrag ausgewählt ist
+                    if not AFWJobs.Get(Rec."Primary Key") then
+                        Error('Es wurde kein Job ausgewählt.');
+
+                    // Aufruf der Funktion in der CodeUnit
+                    AFWFunctions.SetJobStatusToReady(AFWJobs);
+
+                    // Aktualisieren der Liste
+                    CurrPage.Update(false);
+                end;
+            }
+
+            action(SetJobToStopped)
+            {
+                ApplicationArea = All;
+                Caption = 'Set Job to Stopped', Comment = 'DEU="Job auf Stopped setzen"';
+                ToolTip = 'Set the job status to Stopped.', Comment = 'DEU="Setze den Jobstatus auf Stopped."';
+                Image = Stop;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    AFWFunctions: Codeunit "AFW Functions";
+                    AFWJobs: Record "AFW Jobs";
+                begin
+                    // Überprüfen, ob ein Eintrag ausgewählt ist
+                    if not AFWJobs.Get(Rec."Primary Key") then
+                        Error('Es wurde kein Job ausgewählt.');
+
+                    // Aufruf der Funktion in der CodeUnit
+                    AFWFunctions.SetJobStatusToStopped(AFWJobs);
+
+                    // Aktualisieren der Liste
+                    CurrPage.Update();
+                end;
+            }
+        }
+    }
 }

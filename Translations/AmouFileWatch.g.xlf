@@ -278,6 +278,26 @@
           <note from="Developer" annotates="general" priority="2">DEU="Gibt den aktuellen Status des Jobs an."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Control Status - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1831751231 - Action 3261967079 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set the job status to Ready if all entries are correct.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Setze den Jobstatus auf Ready, wenn alle Einträge korrekt sind."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Action SetJobToReady - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1831751231 - Action 3261967079 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set Job to Ready</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Job auf Ready setzen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Action SetJobToReady - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1831751231 - Action 1941688041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set the job status to Stopped.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Setze den Jobstatus auf Stopped."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Action SetJobToStopped - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1831751231 - Action 1941688041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set Job to Stopped</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Job auf Stopped setzen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Action SetJobToStopped - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 273126673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AFW Setup</source>
           <note from="Developer" annotates="general" priority="2">DEU="AFW Einrichtung"</note>
@@ -343,15 +363,15 @@
           <note from="Developer" annotates="general" priority="2">DEU="Die E-Mail-Adresse, von der die E-Mails gesendet werden sollen."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control Sender's Address - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 273126673 - Action 1689517202 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Send a test email to verify the sender's address.</source>
-          <note from="Developer" annotates="general" priority="2">DEU="Senden Sie eine Test-E-Mail, um die Absenderadresse zu überprüfen."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action PfadTesten - Property ToolTip</note>
+        <trans-unit id="Page 273126673 - Action 2621021221 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Test the path for its existence and accessibility</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Testen Sie den Pfad auf seine Existenz und Erreichbarkeit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckPath - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 273126673 - Action 1689517202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pfad teisten</source>
-          <note from="Developer" annotates="general" priority="2">DEU="Pfad testen"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action PfadTesten - Property Caption</note>
+        <trans-unit id="Page 273126673 - Action 2621021221 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check path</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Pfad prüfen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckPath - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 273126673 - Action 1285001562 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send a test email to verify the sender's address.</source>

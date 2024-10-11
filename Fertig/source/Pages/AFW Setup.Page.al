@@ -95,17 +95,17 @@ page 50100 "AFW Setup"
                     end;
                 end;
             }
-            action(PfadTesten)
+            action(CheckPath)
             {
                 ApplicationArea = All;
-                Caption = 'Pfad teisten', Comment = 'DEU="Pfad testen"';
-                ToolTip = 'Send a test email to verify the sender''s address.', Comment = 'DEU="Senden Sie eine Test-E-Mail, um die Absenderadresse zu überprüfen."';
+                Caption = 'Check path', Comment = 'DEU="Pfad prüfen"';
+                ToolTip = 'Test the path for its existence and accessibility', Comment = 'DEU="Testen Sie den Pfad auf seine Existenz und Erreichbarkeit"';
                 Image = AnalysisView;
                 trigger OnAction()
                 var
                     AFWFunctions: Codeunit "AFW Functions";
                 begin
-                    AFWFunctions.TestFile(Rec."Log File Path");
+                    AFWFunctions.CheckPath(Rec."Log File Path");
                 end;
 
             }
