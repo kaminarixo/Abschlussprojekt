@@ -51,17 +51,10 @@ table 50102 "AFW Alerts"
     }
 
     trigger OnInsert()
+    var
+        AFWFunctions: Codeunit "AFW Functions";
     begin
-        // Optional: Code zum Initialisieren von Standardwerten oder Ausführen von Aktionen beim Einfügen
-    end;
-
-    trigger OnModify()
-    begin
-        // Optional: Code zum Ausführen von Aktionen beim Ändern
-    end;
-
-    trigger OnDelete()
-    begin
-        // Optional: Code zum Ausführen von Aktionen beim Löschen
+        if Rec."Primary Key" = '' then
+            Rec."Primary Key" := AFWFunctions.GenerateNextPrimaryKey(Rec);
     end;
 }

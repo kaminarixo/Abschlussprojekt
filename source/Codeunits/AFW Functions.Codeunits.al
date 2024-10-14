@@ -2,7 +2,7 @@ codeunit 50100 "AFW Functions"
 {
     trigger OnRun()
     begin
-        // Initialisierungscode, falls nötig
+        CheckJobs();
     end;
 
     // Initialisiert die Setup-Tabelle mit Standardwerten.
@@ -17,7 +17,7 @@ codeunit 50100 "AFW Functions"
         end;
     end;
 
-    /// Generiert den nächsten Primärschlüssel für den Job.
+    // Generiert den nächsten Primärschlüssel für den Job.
     procedure GenerateNextPrimaryKey(var JobRec: Record "AFW Jobs"): Code[10]
     var
         LastPrimaryKey: Code[10];
@@ -30,6 +30,23 @@ codeunit 50100 "AFW Functions"
         AFWJobs.SetAscending("Primary Key", true);
         if AFWJobs.FindLast() then
             LastPrimaryKey := AFWJobs."Primary Key";
+
+        exit(IncStr(LastPrimaryKey));
+    end;
+
+    // Generiert den nächsten Primärschlüssel für die Alerts.
+    procedure GenerateNextPrimaryKey(var AlertsRec: Record "AFW Alerts"): Code[10]
+    var
+        LastPrimaryKey: Code[10];
+        AFWAlerts: Record "AFW Alerts";
+    begin
+        if AFWAlerts.Count() = 0 then
+            exit('1');
+
+        AFWAlerts.SetCurrentKey("Primary Key");
+        AFWAlerts.SetAscending("Primary Key", true);
+        if AFWAlerts.FindLast() then
+            LastPrimaryKey := AFWAlerts."Primary Key";
 
         exit(IncStr(LastPrimaryKey));
     end;
@@ -97,13 +114,31 @@ codeunit 50100 "AFW Functions"
         Message('Test-E-Mail wurde gesendet.');
     end;
 
-    // Pfad überprüfen
-    procedure CheckPath(Pfad: Text)
+    // Datei überprüfen
+    procedure CheckFile(Pfad: Text)
     begin
         If File.Exists(Pfad) then begin
-            Message('Es wurde folgender Pfad geprüft:\%1\Der Pfad existiert.', Pfad);
+            Message('Es wurde folgende Datei geprüft:\%1\Die Datei existiert.', Pfad);
         end else
-            Message('Es wurde folgender Pfad geprüft:\%1\Der Pfad existiert nicht.', Pfad);
+            Message('Es wurde folgende Datei geprüft:\%1\Die Datei existiert nicht.', Pfad);
+    end;
+
+    // Pfad überprüfen
+    procedure CheckPath(Pfad: Text): Boolean
+    var
+        PfadVar: File;
+    begin
+        Pfad := Pfad + '\PathCheckFile.txt';
+        if (PfadVar.Create(Pfad)) then begin
+            Message('Der Pfad existiert');
+        end else begin
+            Message('Der Pfad existiert nicht.');
+            exit(false);
+        end;
+        PfadVar.Close();
+        File.Erase(Pfad);
+        exit(true)
+
     end;
 
     // Überprüft den Job und setzt den Status auf "Ready", wenn alle Einträge korrekt sind.
@@ -136,5 +171,34 @@ codeunit 50100 "AFW Functions"
         // Setze den Status auf "Stopped"
         JobRec.Status := JobRec.Status::Stopped;
         JobRec.Modify();
+    end;
+
+    // Prüft alle Jobs
+    // - Wenn Pfad nicht gefunden, dann wird Job auf "Error" gesetzt
+    procedure CheckJobs()
+    var
+        Jobs: Record "AFW Jobs";
+        Path: Text;
+        FileManagement: Codeunit "File Management";
+    begin
+        if Jobs.FindSet() then
+            repeat
+                Path := Jobs."Folder Path";
+                //Sleep(5000);
+                If CheckPath(Path) then begin
+                    Message('passt');
+                end else begin
+                    Jobs.Status := Jobs.Status::Error;
+                    Jobs.Modify();
+                end;
+
+
+            until Jobs.Next() = 0;
+    end;
+
+    // Eintrag als Meldung machen
+    procedure CreateErrorDataset()
+    begin
+
     end;
 }

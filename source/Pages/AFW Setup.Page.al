@@ -95,11 +95,24 @@ page 50100 "AFW Setup"
                     end;
                 end;
             }
+            action(CheckFile)
+            {
+                ApplicationArea = All;
+                Caption = 'Check file', Comment = 'DEU="Datei prüfen"';
+                ToolTip = 'Test the file for its existence and accessibility', Comment = 'DEU="Testen Sie die Datei auf seine Existenz und Erreichbarkeit"';
+                Image = AnalysisView;
+                trigger OnAction()
+                var
+                    AFWFunctions: Codeunit "AFW Functions";
+                begin
+                    AFWFunctions.CheckFile(Rec."Log File Path");
+                end;
+            }
             action(CheckPath)
             {
                 ApplicationArea = All;
-                Caption = 'Check path', Comment = 'DEU="Pfad prüfen"';
-                ToolTip = 'Test the path for its existence and accessibility', Comment = 'DEU="Testen Sie den Pfad auf seine Existenz und Erreichbarkeit"';
+                Caption = 'Check directory', Comment = 'DEU="Pfad prüfen"';
+                ToolTip = 'Test the directory for its existence and accessibility', Comment = 'DEU="Testen Sie den Pfad auf seine Existenz und Erreichbarkeit"';
                 Image = AnalysisView;
                 trigger OnAction()
                 var
@@ -107,7 +120,19 @@ page 50100 "AFW Setup"
                 begin
                     AFWFunctions.CheckPath(Rec."Log File Path");
                 end;
-
+            }
+            action(CheckJobs)
+            {
+                ApplicationArea = All;
+                Caption = 'Check jobs', Comment = 'DEU="Jobs prüfen"';
+                ToolTip = 'Test the jobs for its existence and accessibility', Comment = 'DEU="Testen Sie die Jobs auf seine Existenz und Erreichbarkeit"';
+                Image = AnalysisView;
+                trigger OnAction()
+                var
+                    AFWFunctions: Codeunit "AFW Functions";
+                begin
+                    AFWFunctions.CheckJobs;
+                end;
             }
         }
     }

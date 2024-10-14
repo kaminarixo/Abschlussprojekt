@@ -434,17 +434,17 @@
           <note from="Developer" annotates="general" priority="2">DEU="Die E-Mail-Adresse, von der die E-Mails gesendet werden sollen."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control Sender's Address - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 273126673 - Action 2621021221 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Test the path for its existence and accessibility</source>
-          <target state="translated">Testen Sie den Pfad auf seine Existenz und Erreichbarkeit</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Testen Sie den Pfad auf seine Existenz und Erreichbarkeit"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckPath - Property ToolTip</note>
+        <trans-unit id="Page 273126673 - Action 1886113076 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Test the file for its existence and accessibility</source>
+          <target state="translated">Testen Sie die Datei auf seine Existenz und Erreichbarkeit</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Testen Sie die Datei auf seine Existenz und Erreichbarkeit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckFile - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 273126673 - Action 2621021221 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Check path</source>
-          <target state="translated">Pfad prüfen</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Pfad prüfen"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckPath - Property Caption</note>
+        <trans-unit id="Page 273126673 - Action 1886113076 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check file</source>
+          <target state="translated">Datei prüfen</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Datei prüfen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckFile - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 273126673 - Action 1285001562 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send a test email to verify the sender's address.</source>
