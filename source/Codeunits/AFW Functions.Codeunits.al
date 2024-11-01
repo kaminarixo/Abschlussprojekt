@@ -31,38 +31,61 @@ codeunit 50100 "AFW Functions"
         end;
     end;
 
-    // Generiert den nächsten Primärschlüssel für den Job.
-    procedure GenerateNextPrimaryKey(var JobRec: Record "AFW Jobs"): Code[10]
+    procedure CreateOrCheckNumberSeries()
     var
-        LastPrimaryKey: Code[10];
-        AFWJobs: Record "AFW Jobs";
+        NoSeries: Record "No. Series";
+        NoSeriesLine: Record "No. Series Line";
     begin
-        if AFWJobs.Count() = 0 then
-            exit('1');
+        // AFW Alerts NS
+        if not NoSeries.Get('AFW Alerts NS') then begin
+            NoSeries.Init();
+            NoSeries.Code := 'AFW Alerts NS';
+            NoSeries.Description := 'Nummernserie für AFW Alerts';
+            NoSeries."Date Order" := true;   // Chronologische Vergabe
+            NoSeries."Default Nos." := true; // Standardnummern
+            NoSeries."Manual Nos." := false; // Manuelle Vergabe
+            NoSeries.Insert(true);
+            Message('Nummernserie "AFW Alerts NS" wurde erstellt.');
+        end else begin
+            Message('Nummernserie "AFW Alerts NS" existiert bereits.');
+        end;
 
-        AFWJobs.SetCurrentKey("Primary Key");
-        AFWJobs.SetAscending("Primary Key", true);
-        if AFWJobs.FindLast() then
-            LastPrimaryKey := AFWJobs."Primary Key";
+        // Nummernserienzeile für AFW Alerts NS erstellen, falls noch nicht vorhanden
+        if not NoSeriesLine.Get('AFW Alerts NS', '') then begin
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'AFW Alerts NS';
+            NoSeriesLine."Line No." := 10000; // Erste verfügbare Zeile
+            NoSeriesLine."Starting No." := '10000'; // Startwert
+            NoSeriesLine."Ending No." := '99999'; // Endwert
+            NoSeriesLine.Insert(true);
+            Message('Nummernserienzeile für "AFW Alerts NS" wurde erstellt.');
+        end;
 
-        exit(IncStr(LastPrimaryKey));
-    end;
 
-    // Generiert den nächsten Primärschlüssel für die Alerts.
-    procedure GenerateNextPrimaryKey(var AlertsRec: Record "AFW Alerts"): Code[10]
-    var
-        LastPrimaryKey: Code[10];
-        AFWAlerts: Record "AFW Alerts";
-    begin
-        if AFWAlerts.Count() = 0 then
-            exit('1');
+        // AFW Jobs NS
+        if not NoSeries.Get('AFW Jobs NS') then begin
+            NoSeries.Init();
+            NoSeries.Code := 'AFW Jobs NS';
+            NoSeries.Description := 'Nummernserie für AFW Jobs';
+            NoSeries."Default Nos." := true; // Standardnummern
+            NoSeries."Manual Nos." := false; // Manuelle Vergabe
+            NoSeries.Insert(true);
+            Message('Nummernserie "AFW Jobs NS" wurde erstellt.');
+        end else begin
+            Message('Nummernserie "AFW Jobs NS" existiert bereits.');
+        end;
 
-        AFWAlerts.SetCurrentKey("Primary Key");
-        AFWAlerts.SetAscending("Primary Key", true);
-        if AFWAlerts.FindLast() then
-            LastPrimaryKey := AFWAlerts."Primary Key";
+        // Nummernserienzeile für AFW Jobs NS erstellen, falls noch nicht vorhanden
+        if not NoSeriesLine.Get('AFW Jobs NS', '') then begin
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'AFW Jobs NS';
+            NoSeriesLine."Line No." := 10000; // Erste verfügbare Zeile
+            NoSeriesLine."Starting No." := '20000'; // Startwert
+            NoSeriesLine."Ending No." := '29999'; // Endwert
+            NoSeriesLine.Insert(true);
+            Message('Nummernserienzeile für "AFW Jobs NS" wurde erstellt.');
+        end;
 
-        exit(IncStr(LastPrimaryKey));
     end;
 
     // Zeigt einen Bestätigungsdialog an, wenn Überwachung oder Protokollierung deaktiviert werden soll.
@@ -154,7 +177,7 @@ codeunit 50100 "AFW Functions"
     begin
         Pfad := Pfad + '\PathCheckFile.txt';
         if (PfadVar.Create(Pfad)) then begin
-            Message('Der Pfad existiert');
+
         end else begin
             Message('Der Pfad existiert nicht.');
             exit(false);
@@ -214,6 +237,7 @@ codeunit 50100 "AFW Functions"
         CurrentTime: DateTime;
         MonitoringInterval: Duration;
         LastChecked: DateTime;
+        NoSeriesManagement: Codeunit "No. Series";
     begin
         AFWJobs.SetRange(Status, AFWJobs.Status::Ready);
         if AFWJobs.FindSet() then
@@ -241,7 +265,7 @@ codeunit 50100 "AFW Functions"
 
                                 // Protokolliere den Alarm
                                 Alerts.Init();
-                                Alerts."Primary Key" := GenerateNextPrimaryKey(Alerts);
+                                Alerts."Primary Key" := NoSeriesManagement.GetNextNo('AFW Alerts No. Series', Today, true); // Nummernserie verwenden
                                 Alerts."File ID" := CreateGuid();
                                 Alerts."Alert Timestamp" := CurrentDateTime;
                                 Alerts."Alert Message" := StrSubstNo('Datei %1 ist älter als das Überwachungsintervall.', FileName);
@@ -256,7 +280,7 @@ codeunit 50100 "AFW Functions"
                     AFWJobs.Modify();
                     // Protokolliere den Fehler
                     Alerts.Init();
-                    Alerts."Primary Key" := GenerateNextPrimaryKey(Alerts);
+                    Alerts."Primary Key" := NoSeriesManagement.GetNextNo('AFW Alerts No. Series', Today, true); // Nummernserie verwenden
                     Alerts."File ID" := CreateGuid();
                     Alerts."Alert Timestamp" := CurrentDateTime;
                     Alerts."Alert Message" := StrSubstNo('Pfad %1 wurde nicht gefunden.', AFWJobs."Folder Path");

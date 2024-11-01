@@ -76,8 +76,9 @@ table 50101 "AFW Jobs"
     trigger OnInsert()
     var
         AFWFunctions: Codeunit "AFW Functions";
+        NoSeriesManagement: Codeunit "No. Series";
     begin
-        if Rec."Primary Key" = '' then
-            Rec."Primary Key" := AFWFunctions.GenerateNextPrimaryKey(Rec);
+        Rec."Primary Key" := NoSeriesManagement.GetNextNo('AFW Jobs NS', Today, true);
+        ;
     end;
 }

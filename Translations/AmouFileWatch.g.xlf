@@ -403,6 +403,16 @@
           <note from="Developer" annotates="general" priority="2">DEU="Pfad prüfen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckPath - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 273126673 - Action 350355336 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Erstellt die notwendigen Nummernserien für die Erweiterung.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CreateNumberSeries - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Action 350355336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nummernserien erstellen</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CreateNumberSeries - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 273126673 - Action 1285001562 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send a test email to verify the sender's address.</source>
           <note from="Developer" annotates="general" priority="2">DEU="Senden Sie eine Test-E-Mail, um die Absenderadresse zu überprüfen."</note>

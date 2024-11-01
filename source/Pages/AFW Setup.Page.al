@@ -75,6 +75,20 @@ page 50100 "AFW Setup"
     {
         area(Processing)
         {
+            action(CreateNumberSeries)
+            {
+                ApplicationArea = All;
+                Caption = 'Nummernserien erstellen';
+                ToolTip = 'Erstellt die notwendigen Nummernserien für die Erweiterung.';
+                Image = Setup;
+
+                trigger OnAction()
+                var
+                    AFWFunctions: Codeunit "AFW Functions";
+                begin
+                    AFWFunctions.CreateOrCheckNumberSeries();
+                end;
+            }
             action(SendTestEmail)
             {
                 ApplicationArea = All;
