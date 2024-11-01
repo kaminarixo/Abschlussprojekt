@@ -58,6 +58,11 @@
           <note from="Developer" annotates="general" priority="2">DEU="Jobname"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Jobs - Field Job Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2365935200 - Field 720082471 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Checked</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Zuletzt überprüft"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Jobs - Field Last Checked - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2365935200 - Field 756498516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Minutes Between Emails</source>
           <note from="Developer" annotates="general" priority="2">DEU="Minuten zwischen E-Mails"</note>

@@ -1,5 +1,19 @@
+dotnet
+{
+    assembly(mscorlib)
+    {
+        type(System.IO.Directory; Directory) { }
+        type(System.IO.FileInfo; FileInfo) { }
+        type(System.String; ListeDotNet) { }
+        type(System.Array; ArrayDotNet) { }
+    }
+}
 codeunit 50100 "AFW Functions"
 {
+    var
+        Directory: DotNet Directory;
+        FileInfo: DotNet FileInfo;
+
     trigger OnRun()
     begin
         CheckJobs();
@@ -114,6 +128,16 @@ codeunit 50100 "AFW Functions"
         Message('Test-E-Mail wurde gesendet.');
     end;
 
+    // Bei Fehlern in CheckJobs wird die Mail weggeschickt
+    procedure SendEmailNotification(JobRec: Record "AFW Jobs"; FileName: Text)
+    var
+        Email: Codeunit Email;
+        EmailMessage: Codeunit "Email Message";
+        EmailAccount: Record "Email Account";
+    begin
+        EmailMessage.Create(JobRec."Email Recipient", 'File Change Notification', StrSubstNo('The file %1 has been changed.', FileName), true);
+        Email.Send(EmailMessage);
+    end;
     // Datei überprüfen
     procedure CheckFile(Pfad: Text)
     begin
@@ -161,8 +185,10 @@ codeunit 50100 "AFW Functions"
             Error('Die Anzahl der Minuten zwischen E-Mails muss größer als 0 sein.');
 
         // Wenn alle Überprüfungen erfolgreich sind, setze den Status auf "Ready"
-        JobRec.Status := JobRec.Status::Ready;
-        JobRec.Modify();
+        If CheckPath(JobRec."Folder Path") then begin
+            JobRec.Status := JobRec.Status::Ready;
+            JobRec.Modify();
+        end;
     end;
 
     // Setzt den Status des Jobs auf "Stopped".
@@ -177,27 +203,77 @@ codeunit 50100 "AFW Functions"
     // - Wenn Pfad nicht gefunden, dann wird Job auf "Error" gesetzt
     procedure CheckJobs()
     var
-        Jobs: Record "AFW Jobs";
-        Path: Text;
-        FileManagement: Codeunit "File Management";
+        AFWJobs: Record "AFW Jobs";
+        Alerts: Record "AFW Alerts";
+        FileName: Text;
+        LastEmailSent: DateTime;
+        Files: DotNet ArrayDotNet;
+        File: Text;
+        i: Integer;
+        FileInfo: DotNet FileInfo;
+        CurrentTime: DateTime;
+        MonitoringInterval: Duration;
+        LastChecked: DateTime;
     begin
-        if Jobs.FindSet() then
+        AFWJobs.SetRange(Status, AFWJobs.Status::Ready);
+        if AFWJobs.FindSet() then
             repeat
-                Path := Jobs."Folder Path";
-                //Sleep(5000);
-                If CheckPath(Path) then begin
-                    Message('passt');
+                if Directory.Exists(AFWJobs."Folder Path") then begin
+                    Files := Directory.GetFiles(AFWJobs."Folder Path");
+                    for i := 0 to Files.Length - 1 do begin
+                        File := Files.GetValue(i);
+                        FileInfo := FileInfo.FileInfo(File);
+                        FileName := FileInfo.Name;
+
+                        // Überprüfe, ob die Datei den richtigen Typ hat
+                        if AFWJobs."File Types" = AFWJobs."File Types"::All then begin
+                            // Überprüfe, ob die Datei älter ist als das Überwachungsintervall
+                            CurrentTime := CurrentDateTime;
+                            MonitoringInterval := AFWJobs."Monitoring Interval" * 60000; // Umrechnung in Millisekunden
+                            LastChecked := AFWJobs."Last Checked";
+
+                            if (CurrentTime - FileInfo.LastWriteTime) > MonitoringInterval then begin
+                                // Sende E-Mail, wenn die Datei älter ist als das Intervall
+                                SendEmailNotification(AFWJobs, FileName);
+                                LastEmailSent := CurrentDateTime;
+                                AFWJobs."Last Checked" := CurrentDateTime;
+                                AFWJobs.Modify();
+
+                                // Protokolliere den Alarm
+                                Alerts.Init();
+                                Alerts."Primary Key" := GenerateNextPrimaryKey(Alerts);
+                                Alerts."File ID" := CreateGuid();
+                                Alerts."Alert Timestamp" := CurrentDateTime;
+                                Alerts."Alert Message" := StrSubstNo('Datei %1 ist älter als das Überwachungsintervall.', FileName);
+                                Alerts."Recipient" := AFWJobs."Email Recipient";
+                                Alerts."File Name" := FileName;
+                                Alerts.Insert();
+                            end;
+                        end;
+                    end;
                 end else begin
-                    Jobs.Status := Jobs.Status::Error;
-                    Jobs.Modify();
+                    AFWJobs.Status := AFWJobs.Status::Error;
+                    AFWJobs.Modify();
+                    // Protokolliere den Fehler
+                    Alerts.Init();
+                    Alerts."Primary Key" := GenerateNextPrimaryKey(Alerts);
+                    Alerts."File ID" := CreateGuid();
+                    Alerts."Alert Timestamp" := CurrentDateTime;
+                    Alerts."Alert Message" := StrSubstNo('Pfad %1 wurde nicht gefunden.', AFWJobs."Folder Path");
+                    Alerts."Recipient" := AFWJobs."Email Recipient";
+                    Alerts."File Name" := '';
+                    Alerts.Insert();
                 end;
-
-
-            until Jobs.Next() = 0;
+            until AFWJobs.Next() = 0;
     end;
 
     // Eintrag als Meldung machen
     procedure CreateErrorDataset()
+    begin
+
+    end;
+
+    procedure CheckJobsADHOC(var JobRec: Record "AFW Jobs")
     begin
 
     end;

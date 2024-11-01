@@ -58,6 +58,12 @@ table 50101 "AFW Jobs"
             Description = 'Die Anzahl der Minuten, die zwischen dem Senden von E-Mails bei einem Fehler gewartet werden soll';
 
         }
+        field(9; "Last Checked"; DateTime)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Last Checked', Comment = 'DEU="Zuletzt überprüft"';
+            Description = 'Der Zeitpunkt der letzten Überprüfung des Ordners';
+        }
     }
 
     keys
