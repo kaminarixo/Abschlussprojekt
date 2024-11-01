@@ -263,6 +263,11 @@
           <note from="Developer" annotates="general" priority="2">DEU="Gibt den Namen des Jobs an."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Control Job Name - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1831751231 - Control 720082471 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the timestamp of the last check of the folder.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Gibt den Zeitstempel der letzten Überprüfung des Ordners an."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Control Last Checked - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 1831751231 - Control 756498516 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the number of minutes to wait between sending emails on error.</source>
           <note from="Developer" annotates="general" priority="2">DEU="Gibt die Anzahl der Minuten an, die zwischen dem Senden von E-Mails bei einem Fehler gewartet werden soll."</note>

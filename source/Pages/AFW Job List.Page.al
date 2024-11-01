@@ -57,6 +57,11 @@ page 50101 "AFW Job List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the number of minutes to wait between sending emails on error.', Comment = 'DEU="Gibt die Anzahl der Minuten an, die zwischen dem Senden von E-Mails bei einem Fehler gewartet werden soll."';
                 }
+                field("Last Checked"; Rec."Last Checked")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the timestamp of the last check of the folder.', Comment = 'DEU="Gibt den Zeitstempel der letzten Überprüfung des Ordners an."';
+                }
             }
         }
     }

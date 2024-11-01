@@ -68,6 +68,12 @@
           <note from="Developer" annotates="general" priority="2">DEU="Jobname"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Jobs - Field Job Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2365935200 - Field 720082471 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Checked</source>
+          <target state="translated">Zuletzt überprüft</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Zuletzt überprüft"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Jobs - Field Last Checked - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2365935200 - Field 756498516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Minutes Between Emails</source>
           <target state="translated">Minuten zwischen E-Mails</target>
@@ -308,6 +314,12 @@
           <note from="Developer" annotates="general" priority="2">DEU="Gibt den Namen des Jobs an."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Control Job Name - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1831751231 - Control 720082471 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the timestamp of the last check of the folder.</source>
+          <target state="translated">Gibt den Zeitstempel der letzten Überprüfung des Ordners an.</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Gibt den Zeitstempel der letzten Überprüfung des Ordners an."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Control Last Checked - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 1831751231 - Control 756498516 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the number of minutes to wait between sending emails on error.</source>
           <target state="translated">Gibt die Anzahl der Minuten an, die zwischen dem Senden von E-Mails bei einem Fehler gewartet werden soll.</target>
@@ -445,6 +457,30 @@
           <target state="translated">Datei prüfen</target>
           <note from="Developer" annotates="general" priority="2">DEU="Datei prüfen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckFile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Action 2286498038 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Test the jobs for its existence and accessibility</source>
+          <target state="translated">Testen Sie die Jobs auf seine Existenz und Erreichbarkeit</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Testen Sie die Jobs auf seine Existenz und Erreichbarkeit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckJobs - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Action 2286498038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check jobs</source>
+          <target state="translated">Jobs prüfen</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Jobs prüfen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckJobs - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Action 2621021221 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Test the directory for its existence and accessibility</source>
+          <target state="translated">Testen Sie den Pfad auf seine Existenz und Erreichbarkeit</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Testen Sie den Pfad auf seine Existenz und Erreichbarkeit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckPath - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Action 2621021221 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check directory</source>
+          <target state="translated">Pfad prüfen</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Pfad prüfen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckPath - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 273126673 - Action 1285001562 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send a test email to verify the sender's address.</source>
