@@ -54,7 +54,6 @@ codeunit 50100 "AFW Functions"
         if not NoSeriesLine.Get('AFW Alerts NS', '') then begin
             NoSeriesLine.Init();
             NoSeriesLine."Series Code" := 'AFW Alerts NS';
-            NoSeriesLine."Line No." := 10000; // Erste verfügbare Zeile
             NoSeriesLine."Starting No." := '10000'; // Startwert
             NoSeriesLine."Ending No." := '99999'; // Endwert
             NoSeriesLine.Insert(true);
@@ -79,7 +78,6 @@ codeunit 50100 "AFW Functions"
         if not NoSeriesLine.Get('AFW Jobs NS', '') then begin
             NoSeriesLine.Init();
             NoSeriesLine."Series Code" := 'AFW Jobs NS';
-            NoSeriesLine."Line No." := 10000; // Erste verfügbare Zeile
             NoSeriesLine."Starting No." := '20000'; // Startwert
             NoSeriesLine."Ending No." := '29999'; // Endwert
             NoSeriesLine.Insert(true);
