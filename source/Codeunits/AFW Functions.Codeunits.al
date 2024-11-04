@@ -34,7 +34,16 @@ codeunit 50100 "AFW Functions"
     procedure CreateOrCheckJobQueue()
     var
         JobQueue: Record "Job Queue Entry";
+        JobQueueCategory: Record "Job Queue Category";
+        JobQueueCategoryPriority: Enum "Job Queue Priority";
     begin
+        // Überprüfen ob es eine Aufgabenwarteschlangekategorie 'AFW' bereits gibt, wenn nicht dann anlegen
+        If not JobQueueCategory.Get('AFW') then begin
+            JobQueueCategory.Init();
+            JobQueueCategory.Code := 'AFW';
+            JobQueueCategory.Description := 'AFW - AmouFileWatch';
+            JobQueueCategory.Insert(true);
+        end;
         // Überprüfen, ob ein Aufgabenwarteschlangenposten für die Codeunit 50100 existiert
         JobQueue.SetRange("Object Type to Run", JobQueue."Object Type to Run"::Codeunit);
         JobQueue.SetRange("Object ID to Run", 50100); // Codeunit 50100
@@ -46,6 +55,8 @@ codeunit 50100 "AFW Functions"
             JobQueue.ID := CreateGuid();
             JobQueue."User ID" := UserId();
             JobQueue.Description := 'Der Job für die Erweiterung AFW';
+            JobQueue."Job Queue Category Code" := 'AFW';
+            JobQueue."Priority Within Category" := JobQueueCategoryPriority::High;
             JobQueue."Recurring Job" := true;
             JobQueue."Run on Mondays" := true;
             JobQueue."Run on Tuesdays" := true;
@@ -56,6 +67,9 @@ codeunit 50100 "AFW Functions"
             JobQueue."Run on Sundays" := true;
             JobQueue."No. of Minutes between Runs" := 1; // Jede Minute
             JobQueue."Maximum No. of Attempts to Run" := 10;
+            JobQueue."Starting Time" := 000000T;
+            JobQueue."Ending Time" := 235959T;
+            JobQueue."Earliest Start Date/Time" := CurrentDateTime;
             JobQueue.Status := JobQueue.Status::Ready;
             JobQueue.Insert(true);
             Message('Aufgabenwarteschlangenposten für Codeunit 50100 wurde erstellt.');
