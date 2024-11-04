@@ -403,14 +403,24 @@
           <note from="Developer" annotates="general" priority="2">DEU="Pfad prüfen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckPath - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 273126673 - Action 1905791958 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Erstellt den notwendigen Eintrag bei der Aufgabenwarteschlangeposten für die Erweiterung.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CreateJobQueue - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Action 1905791958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Job Queue Job</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Job bei der Aufgabenwarteschlange erstellen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CreateJobQueue - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 273126673 - Action 350355336 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Erstellt die notwendigen Nummernserien für die Erweiterung.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CreateNumberSeries - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 273126673 - Action 350355336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nummernserien erstellen</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>Create No. Series</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Nummernserien erstellen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CreateNumberSeries - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 273126673 - Action 1285001562 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">

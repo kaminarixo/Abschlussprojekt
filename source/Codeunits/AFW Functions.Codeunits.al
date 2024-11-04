@@ -31,6 +31,39 @@ codeunit 50100 "AFW Functions"
         end;
     end;
 
+    procedure CreateOrCheckJobQueue()
+    var
+        JobQueue: Record "Job Queue Entry";
+    begin
+        // Überprüfen, ob ein Aufgabenwarteschlangenposten für die Codeunit 50100 existiert
+        JobQueue.SetRange("Object Type to Run", JobQueue."Object Type to Run"::Codeunit);
+        JobQueue.SetRange("Object ID to Run", 50100); // Codeunit 50100
+        if JobQueue.IsEmpty() then begin
+            // Wenn kein Posten existiert, erstelle einen neuen
+            JobQueue.Init();
+            JobQueue."Object Type to Run" := JobQueue."Object Type to Run"::Codeunit;
+            JobQueue."Object ID to Run" := 50100; // Codeunit 50100
+            JobQueue.ID := CreateGuid();
+            JobQueue."User ID" := UserId();
+            JobQueue.Description := 'Der Job für die Erweiterung AFW';
+            JobQueue."Recurring Job" := true;
+            JobQueue."Run on Mondays" := true;
+            JobQueue."Run on Tuesdays" := true;
+            JobQueue."Run on Wednesdays" := true;
+            JobQueue."Run on Thursdays" := true;
+            JobQueue."Run on Fridays" := true;
+            JobQueue."Run on Saturdays" := true;
+            JobQueue."Run on Sundays" := true;
+            JobQueue."No. of Minutes between Runs" := 1; // Jede Minute
+            JobQueue."Maximum No. of Attempts to Run" := 10;
+            JobQueue.Status := JobQueue.Status::Ready;
+            JobQueue.Insert(true);
+            Message('Aufgabenwarteschlangenposten für Codeunit 50100 wurde erstellt.');
+        end else begin
+            Message('Aufgabenwarteschlangenposten für Codeunit 50100 existiert bereits.');
+        end;
+    end;
+
     procedure CreateOrCheckNumberSeries()
     var
         NoSeries: Record "No. Series";
@@ -46,44 +79,37 @@ codeunit 50100 "AFW Functions"
             NoSeries."Manual Nos." := false; // Manuelle Vergabe
             NoSeries.Insert(true);
             Message('Nummernserie "AFW Alerts NS" wurde erstellt.');
+            // Nummernserienzeile für AFW Alerts NS erstellen
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'AFW Alerts NS';
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := 'Alert100000'; // Startwert
+            NoSeriesLine."Ending No." := 'Alert999999'; // Endwert
+            NoSeriesLine.Insert(true);
         end else begin
             Message('Nummernserie "AFW Alerts NS" existiert bereits.');
         end;
-
-        // Nummernserienzeile für AFW Alerts NS erstellen, falls noch nicht vorhanden
-        if not NoSeriesLine.Get('AFW Alerts NS', '') then begin
-            NoSeriesLine.Init();
-            NoSeriesLine."Series Code" := 'AFW Alerts NS';
-            NoSeriesLine."Starting No." := '10000'; // Startwert
-            NoSeriesLine."Ending No." := '99999'; // Endwert
-            NoSeriesLine.Insert(true);
-            Message('Nummernserienzeile für "AFW Alerts NS" wurde erstellt.');
-        end;
-
 
         // AFW Jobs NS
         if not NoSeries.Get('AFW Jobs NS') then begin
             NoSeries.Init();
             NoSeries.Code := 'AFW Jobs NS';
             NoSeries.Description := 'Nummernserie für AFW Jobs';
+            NoSeries."Date Order" := true;   // Chronologische Vergabe
             NoSeries."Default Nos." := true; // Standardnummern
             NoSeries."Manual Nos." := false; // Manuelle Vergabe
             NoSeries.Insert(true);
             Message('Nummernserie "AFW Jobs NS" wurde erstellt.');
+            // Nummernserienzeile für AFW Jobs NS erstellen, falls noch nicht vorhanden
+            NoSeriesLine.Init();
+            NoSeriesLine."Series Code" := 'AFW Jobs NS';
+            NoSeriesLine."Line No." := 10000;
+            NoSeriesLine."Starting No." := 'Job100000'; // Startwert
+            NoSeriesLine."Ending No." := 'Job999999'; // Endwert
+            NoSeriesLine.Insert(true);
         end else begin
             Message('Nummernserie "AFW Jobs NS" existiert bereits.');
         end;
-
-        // Nummernserienzeile für AFW Jobs NS erstellen, falls noch nicht vorhanden
-        if not NoSeriesLine.Get('AFW Jobs NS', '') then begin
-            NoSeriesLine.Init();
-            NoSeriesLine."Series Code" := 'AFW Jobs NS';
-            NoSeriesLine."Starting No." := '20000'; // Startwert
-            NoSeriesLine."Ending No." := '29999'; // Endwert
-            NoSeriesLine.Insert(true);
-            Message('Nummernserienzeile für "AFW Jobs NS" wurde erstellt.');
-        end;
-
     end;
 
     // Zeigt einen Bestätigungsdialog an, wenn Überwachung oder Protokollierung deaktiviert werden soll.
@@ -236,6 +262,8 @@ codeunit 50100 "AFW Functions"
         MonitoringInterval: Duration;
         LastChecked: DateTime;
         NoSeriesManagement: Codeunit "No. Series";
+        EmailSent: Boolean;
+        EmailInterval: Duration;
     begin
         AFWJobs.SetRange(Status, AFWJobs.Status::Ready);
         if AFWJobs.FindSet() then
@@ -248,16 +276,23 @@ codeunit 50100 "AFW Functions"
                         FileName := FileInfo.Name;
 
                         // Überprüfe, ob die Datei den richtigen Typ hat
-                        if AFWJobs."File Types" = AFWJobs."File Types"::All then begin
+                        if IsFileTypeAllowed(AFWJobs."File Types", FileName) then begin
                             // Überprüfe, ob die Datei älter ist als das Überwachungsintervall
                             CurrentTime := CurrentDateTime;
                             MonitoringInterval := AFWJobs."Monitoring Interval" * 60000; // Umrechnung in Millisekunden
                             LastChecked := AFWJobs."Last Checked";
 
                             if (CurrentTime - FileInfo.LastWriteTime) > MonitoringInterval then begin
-                                // Sende E-Mail, wenn die Datei älter ist als das Intervall
-                                SendEmailNotification(AFWJobs, FileName);
-                                LastEmailSent := CurrentDateTime;
+                                // Überprüfe, ob die E-Mail bereits innerhalb des Intervalls gesendet wurde
+                                EmailInterval := AFWJobs."Minutes Between Emails" * 60000; // Umrechnung in Millisekunden
+                                if (CurrentTime - LastEmailSent) > EmailInterval then begin
+                                    // Sende E-Mail, wenn die Datei älter ist als das Intervall
+                                    SendEmailNotification(AFWJobs, FileName);
+                                    LastEmailSent := CurrentDateTime;
+                                    EmailSent := true;
+                                end;
+
+                                // Aktualisiere den Zeitstempel der letzten Überprüfung
                                 AFWJobs."Last Checked" := CurrentDateTime;
                                 AFWJobs.Modify();
 
@@ -272,6 +307,12 @@ codeunit 50100 "AFW Functions"
                                 Alerts.Insert();
                             end;
                         end;
+                    end;
+
+                    // Wenn keine E-Mail gesendet wurde, aktualisiere den Zeitstempel der letzten Überprüfung
+                    if not EmailSent then begin
+                        AFWJobs."Last Checked" := CurrentDateTime;
+                        AFWJobs.Modify();
                     end;
                 end else begin
                     AFWJobs.Status := AFWJobs.Status::Error;
@@ -289,10 +330,27 @@ codeunit 50100 "AFW Functions"
             until AFWJobs.Next() = 0;
     end;
 
-    // Eintrag als Meldung machen
-    procedure CreateErrorDataset()
+    // Hilfsfunktion zur Überprüfung des Dateityps
+    procedure IsFileTypeAllowed(FileTypes: Enum "AFW File Types"; FileName: Text): Boolean
+    var
+        FileExtension: Text;
     begin
+        if FileTypes = FileTypes::All then
+            exit(true);
 
+        FileExtension := CopyStr(FileName, StrLen(FileName) - 3, 4);
+        case FileTypes of
+            FileTypes::PDF:
+                exit(FileExtension = '.pdf');
+            FileTypes::DOCX:
+                exit(FileExtension = '.docx');
+            FileTypes::XLSX:
+                exit(FileExtension = '.xlsx');
+            FileTypes::TXT:
+                exit(FileExtension = '.txt');
+            FileTypes::CSV:
+                exit(FileExtension = '.csv');
+        end;
     end;
 
     procedure CheckJobsADHOC(var JobRec: Record "AFW Jobs")

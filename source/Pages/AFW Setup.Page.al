@@ -78,7 +78,7 @@ page 50100 "AFW Setup"
             action(CreateNumberSeries)
             {
                 ApplicationArea = All;
-                Caption = 'Nummernserien erstellen';
+                Caption = 'Create No. Series', Comment = 'DEU="Nummernserien erstellen"';
                 ToolTip = 'Erstellt die notwendigen Nummernserien für die Erweiterung.';
                 Image = Setup;
 
@@ -87,6 +87,21 @@ page 50100 "AFW Setup"
                     AFWFunctions: Codeunit "AFW Functions";
                 begin
                     AFWFunctions.CreateOrCheckNumberSeries();
+                end;
+            }
+            action(CreateJobQueue)
+            {
+                ApplicationArea = All;
+                Caption = 'Create Job Queue Job', Comment = 'DEU="Job bei der Aufgabenwarteschlange erstellen"';
+                ToolTip = 'Erstellt den notwendigen Eintrag bei der Aufgabenwarteschlangeposten für die Erweiterung.';
+                Image = Setup;
+
+                trigger OnAction()
+                var
+                    AFWFunctions: Codeunit "AFW Functions";
+                begin
+                    AFWFunctions.CreateOrCheckJobQueue();
+                    ;
                 end;
             }
             action(SendTestEmail)
