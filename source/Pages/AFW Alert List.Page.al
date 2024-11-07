@@ -14,6 +14,11 @@ page 50102 "AFW Alert List"
         {
             repeater(Group)
             {
+                field("Primary Key"; Rec."Primary Key")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the primary key of the alert.', Comment = 'DEU="Gibt den Primärschlüssel der Fehlermeldung an."';
+                }
                 field("File Name"; Rec."File Name")
                 {
                     ApplicationArea = All;

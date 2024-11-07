@@ -62,6 +62,11 @@ page 50101 "AFW Job List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the timestamp of the last check of the folder.', Comment = 'DEU="Gibt den Zeitstempel der letzten Überprüfung des Ordners an."';
                 }
+                field("Last EMail Sent"; Rec."Last EMail Sent")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the timestamp of the last sent E-Mail', Comment = 'DEU="Gibt den Zeitstempel der zuletzt gesendeten Fehler Mail an."';
+                }
             }
         }
     }

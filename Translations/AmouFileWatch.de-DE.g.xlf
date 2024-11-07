@@ -74,6 +74,12 @@
           <note from="Developer" annotates="general" priority="2">DEU="Zuletzt überprüft"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Jobs - Field Last Checked - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2365935200 - Field 3896255894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last E-Mail sent</source>
+          <target state="translated">Zuletzt gesendete E-Mail</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Zuletzt gesendete E-Mail"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Jobs - Field Last EMail Sent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2365935200 - Field 756498516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Minutes Between Emails</source>
           <target state="translated">Minuten zwischen E-Mails</target>
@@ -187,6 +193,12 @@
           <target state="translated">Dateiname</target>
           <note from="Developer" annotates="general" priority="2">DEU="Dateiname"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Control File Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1199857104 - Control 1663593181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the primary key of the alert.</source>
+          <target state="translated">Gibt den Primärschlüssel der Fehlermeldung an.</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Gibt den Primärschlüssel der Fehlermeldung an."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Control Primary Key - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1199857104 - Control 400074693 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the email address of the recipient for the alert.</source>
@@ -319,6 +331,12 @@
           <target state="translated">Gibt den Zeitstempel der letzten Überprüfung des Ordners an.</target>
           <note from="Developer" annotates="general" priority="2">DEU="Gibt den Zeitstempel der letzten Überprüfung des Ordners an."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Control Last Checked - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1831751231 - Control 3896255894 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the timestamp of the last sent E-Mail</source>
+          <target state="translated">Gibt den Zeitstempel der zuletzt gesendeten Fehler Mail an.</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Gibt den Zeitstempel der zuletzt gesendeten Fehler Mail an."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Control Last EMail Sent - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1831751231 - Control 756498516 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the number of minutes to wait between sending emails on error.</source>

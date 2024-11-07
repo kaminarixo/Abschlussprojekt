@@ -97,8 +97,8 @@ codeunit 50100 "AFW Functions"
             NoSeriesLine.Init();
             NoSeriesLine."Series Code" := 'AFW Alerts NS';
             NoSeriesLine."Line No." := 10000;
-            NoSeriesLine."Starting No." := 'Alert100000'; // Startwert
-            NoSeriesLine."Ending No." := 'Alert999999'; // Endwert
+            NoSeriesLine."Starting No." := 'Aler100000'; // Startwert
+            NoSeriesLine."Ending No." := 'Aler999999'; // Endwert
             NoSeriesLine.Insert(true);
         end else begin
             Message('Nummernserie "AFW Alerts NS" existiert bereits.');
@@ -267,7 +267,6 @@ codeunit 50100 "AFW Functions"
         AFWJobs: Record "AFW Jobs";
         Alerts: Record "AFW Alerts";
         FileName: Text;
-        LastEmailSent: DateTime;
         Files: DotNet ArrayDotNet;
         File: Text;
         i: Integer;
@@ -282,6 +281,7 @@ codeunit 50100 "AFW Functions"
         AFWJobs.SetRange(Status, AFWJobs.Status::Ready);
         if AFWJobs.FindSet() then
             repeat
+                EMailSent := false;
                 if Directory.Exists(AFWJobs."Folder Path") then begin
                     Files := Directory.GetFiles(AFWJobs."Folder Path");
                     for i := 0 to Files.Length - 1 do begin
@@ -299,12 +299,22 @@ codeunit 50100 "AFW Functions"
                             if (CurrentTime - FileInfo.LastWriteTime) > MonitoringInterval then begin
                                 // Überprüfe, ob die E-Mail bereits innerhalb des Intervalls gesendet wurde
                                 EmailInterval := AFWJobs."Minutes Between Emails" * 60000; // Umrechnung in Millisekunden
-                                if (CurrentTime - LastEmailSent) > EmailInterval then begin
+                                if AFWJobs."Last EMail Sent" = 0DT then begin
                                     // Sende E-Mail, wenn die Datei älter ist als das Intervall
                                     SendEmailNotification(AFWJobs, FileName);
-                                    LastEmailSent := CurrentDateTime;
+                                    AFWJobs."Last EMail Sent" := CurrentDateTime;
+                                    AFWJobs.Modify(true);
                                     EmailSent := true;
+                                end else begin
+                                    if (CurrentTime - AFWJobs."Last EMail Sent") > EmailInterval then begin
+                                        // Sende E-Mail, wenn die Datei älter ist als das Intervall
+                                        SendEmailNotification(AFWJobs, FileName);
+                                        AFWJobs."Last EMail Sent" := CurrentDateTime;
+                                        AFWJobs.Modify(true);
+                                        EmailSent := true;
+                                    end;
                                 end;
+
 
                                 // Aktualisiere den Zeitstempel der letzten Überprüfung
                                 AFWJobs."Last Checked" := CurrentDateTime;
@@ -312,7 +322,7 @@ codeunit 50100 "AFW Functions"
 
                                 // Protokolliere den Alarm
                                 Alerts.Init();
-                                Alerts."Primary Key" := NoSeriesManagement.GetNextNo('AFW Alerts No. Series', Today, true); // Nummernserie verwenden
+                                Alerts."Primary Key" := NoSeriesManagement.GetNextNo('AFW Alerts NS', Today, true); // Nummernserie verwenden
                                 Alerts."File ID" := CreateGuid();
                                 Alerts."Alert Timestamp" := CurrentDateTime;
                                 Alerts."Alert Message" := StrSubstNo('Datei %1 ist älter als das Überwachungsintervall.', FileName);
@@ -333,11 +343,14 @@ codeunit 50100 "AFW Functions"
                     AFWJobs.Modify();
                     // Protokolliere den Fehler
                     Alerts.Init();
-                    Alerts."Primary Key" := NoSeriesManagement.GetNextNo('AFW Alerts No. Series', Today, true); // Nummernserie verwenden
+                    Alerts."Primary Key" := NoSeriesManagement.GetNextNo('AFW Alerts NS', Today, true); // Nummernserie verwenden
                     Alerts."File ID" := CreateGuid();
                     Alerts."Alert Timestamp" := CurrentDateTime;
                     Alerts."Alert Message" := StrSubstNo('Pfad %1 wurde nicht gefunden.', AFWJobs."Folder Path");
-                    Alerts."Recipient" := AFWJobs."Email Recipient";
+                    // Wenn Mail versendet wurde, dann Empfänger in Alert Tabelle
+                    if EmailSent then begin
+                        Alerts."Recipient" := AFWJobs."Email Recipient";
+                    end;
                     Alerts."File Name" := '';
                     Alerts.Insert();
                 end;
@@ -348,22 +361,36 @@ codeunit 50100 "AFW Functions"
     procedure IsFileTypeAllowed(FileTypes: Enum "AFW File Types"; FileName: Text): Boolean
     var
         FileExtension: Text;
+        LastDotPos: Integer;
     begin
         if FileTypes = FileTypes::All then
             exit(true);
 
-        FileExtension := CopyStr(FileName, StrLen(FileName) - 3, 4);
+        // Finde die Position des letzten Punktes im Dateinamen
+        LastDotPos := StrLen(FileName);
+        while LastDotPos > 0 do begin
+            if FileName[LastDotPos] = '.' then
+                break;
+            LastDotPos -= 1;
+        end;
+
+        if LastDotPos = 0 then
+            exit(false); // Keine Erweiterung gefunden
+
+        // Extrahiere die Erweiterung
+        FileExtension := CopyStr(FileName, StrLen(FileName) - LastDotPos + 1);
+
         case FileTypes of
             FileTypes::PDF:
-                exit(FileExtension = '.pdf');
+                exit(FileExtension = 'pdf');
             FileTypes::DOCX:
-                exit(FileExtension = '.docx');
+                exit(FileExtension = 'docx');
             FileTypes::XLSX:
-                exit(FileExtension = '.xlsx');
+                exit(FileExtension = 'xlsx');
             FileTypes::TXT:
-                exit(FileExtension = '.txt');
+                exit(FileExtension = 'txt');
             FileTypes::CSV:
-                exit(FileExtension = '.csv');
+                exit(FileExtension = 'csv');
         end;
     end;
 

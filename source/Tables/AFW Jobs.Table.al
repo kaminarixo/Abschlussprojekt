@@ -64,6 +64,12 @@ table 50101 "AFW Jobs"
             Caption = 'Last Checked', Comment = 'DEU="Zuletzt überprüft"';
             Description = 'Der Zeitpunkt der letzten Überprüfung des Ordners';
         }
+        field(10; "Last EMail Sent"; DateTime)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Last E-Mail sent', Comment = 'DEU="Zuletzt gesendete E-Mail"';
+            Description = 'Der Zeitpunkt der zuletzt gesendeten E-Mail';
+        }
     }
 
     keys
