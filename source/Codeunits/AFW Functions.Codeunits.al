@@ -243,7 +243,7 @@ codeunit 50100 "AFW Functions"
         if (PfadVar.Create(Pfad)) then begin
 
         end else begin
-            Message('Der Pfad existiert nicht.');
+            Error('Der Pfad existiert nicht.');
             exit(false);
         end;
         PfadVar.Close();

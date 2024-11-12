@@ -32,6 +32,12 @@ page 50103 "AFW Job Card"
                     ApplicationArea = All;
                     ToolTip = 'Specify the path of the folder to be monitored.', Comment = 'DEU="Geben Sie den Pfad des zu überwachenden Ordners an."';
                     NotBlank = true;
+                    trigger OnValidate()
+                    var
+                        AFWFunctions: Codeunit "AFW Functions";
+                    begin
+                        AFWFunctions.CheckPath(Rec."Folder Path");
+                    end;
                 }
                 field("File Types"; Rec."File Types")
                 {
