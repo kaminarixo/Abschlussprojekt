@@ -38,7 +38,14 @@ table 50102 "AFW Alerts"
         field(6; "File Name"; Text[100])
         {
             DataClassification = ToBeClassified;
+            Caption = 'File Name', Comment = 'DEU="Dateiname"';
             Description = 'Der Name der Datei, bei der es einen Fehler gab';
+        }
+        field(7; "Job Code"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Job Code', Comment = 'DEU="Job Code"';
+            Description = 'Der Job Code des Jobs.';
         }
     }
 

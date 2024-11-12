@@ -127,6 +127,19 @@ page 50101 "AFW Job List"
                     CurrPage.Update();
                 end;
             }
+            action(CheckJobs)
+            {
+                ApplicationArea = All;
+                Caption = 'Check jobs', Comment = 'DEU="Jobs prüfen"';
+                ToolTip = 'Test the jobs for its existence and accessibility', Comment = 'DEU="Testen Sie die Jobs auf seine Existenz und Erreichbarkeit"';
+                Image = AnalysisView;
+                trigger OnAction()
+                var
+                    AFWFunctions: Codeunit "AFW Functions";
+                begin
+                    AFWFunctions.CheckJobs;
+                end;
+            }
         }
     }
 }

@@ -12,7 +12,6 @@ codeunit 50100 "AFW Functions"
 {
     var
         Directory: DotNet Directory;
-        FileInfo: DotNet FileInfo;
 
     trigger OnRun()
     begin
@@ -25,10 +24,15 @@ codeunit 50100 "AFW Functions"
         if not SetupRec.Get() then begin
             SetupRec.Init();
             SetupRec."Primary Key" := '';
-            SetupRec."Enable Monitoring" := true; // Standardmäßig aktiviert
-            SetupRec."Enable Logging" := true; // Standardmäßig aktiviert
+            SetupRec."Enable Monitoring" := false; // Standardmäßig deaktiviert
             SetupRec.Insert(true);
         end;
+    end;
+
+    procedure Setup()
+    begin
+        CreateOrCheckJobQueue();
+        CreateOrCheckNumberSeries();
     end;
 
     procedure CreateOrCheckJobQueue()
@@ -126,12 +130,12 @@ codeunit 50100 "AFW Functions"
         end;
     end;
 
-    // Zeigt einen Bestätigungsdialog an, wenn Überwachung oder Protokollierung deaktiviert werden soll.
+    // Zeigt einen Bestätigungsdialog an, wenn die Überwachung deaktiviert werden soll.
     procedure ConfirmDeactivation(SetupRec: Record "AFW Setup"): Boolean
     var
         ConfirmMessage: Text;
     begin
-        ConfirmMessage := 'Sind Sie sicher, dass Sie die Überwachung/Protokollierung deaktivieren möchten?';
+        ConfirmMessage := 'Sind Sie sicher, dass Sie die Überwachung deaktivieren möchten?';
         exit(Confirm(ConfirmMessage, true));
     end;
 
@@ -165,9 +169,6 @@ codeunit 50100 "AFW Functions"
         // Setze den Status auf "Ready"
         StartStatus := StartStatus::Ready;
 
-        // Finde alle Jobs, die gestoppt sind
-        Jobs.SetRange(Status, StartStatus::Stopped);
-
         if Jobs.FindSet() then
             repeat
                 Jobs.Status := StartStatus;
@@ -195,19 +196,62 @@ codeunit 50100 "AFW Functions"
         Email: Codeunit Email;
         EmailMessage: Codeunit "Email Message";
         EmailAccount: Record "Email Account";
+        EmailBody: Text;
+        Language: Codeunit Language;
+        LanguageCode: Code[10];
     begin
-        EmailMessage.Create(JobRec."Email Recipient", 'File Change Notification', StrSubstNo('The file %1 has been changed.', FileName), true);
+        // Ermittle die Systemsprache
+        LanguageCode := Language.GetUserLanguageCode();
+
+        // HTML-formatierte E-Mail-Body in Englisch
+        EmailBody := '<html>' +
+                    '<body>' +
+                    '<p>Dear Ladys and Gentleman,</p>' +
+                    '<p>The following file has been detected as older than the monitoring interval:</p>' +
+                    '<ul>' +
+                    '<li><strong>File Name:</strong> %1</li>' +
+                    '<li><strong>Job Name:</strong> %2</li>' +
+                    '<li><strong>Folder Path:</strong> %3</li>' +
+                    '<li><strong>Monitoring Interval:</strong> %4 minutes</li>' +
+                    '<li><strong>Email Recipient:</strong> %5</li>' +
+                    '</ul>' +
+                    '<p>Please take appropriate action.</p>' +
+                    '<p>Best regards,<br>Your AmouFileWatch System</p>' +
+                    '</body>' +
+                    '</html>';
+
+        // HTML-formatierte E-Mail-Body in Deutsch
+        if LanguageCode = 'DEU' then
+            EmailBody := '<html>' +
+                        '<body>' +
+                        '<p>Sehr geehrte Damen und Herren,</p>' +
+                        '<p>Die folgende Datei wurde als älter als das Überwachungsintervall erkannt:</p>' +
+                        '<ul>' +
+                        '<li><strong>Dateiname:</strong> %1</li>' +
+                        '<li><strong>Jobname:</strong> %2</li>' +
+                        '<li><strong>Ordnerpfad:</strong> %3</li>' +
+                        '<li><strong>Überwachungsintervall:</strong> %4 Minuten</li>' +
+                        '<li><strong>E-Mail-Empfänger:</strong> %5</li>' +
+                        '</ul>' +
+                        '<p>Bitte ergreifen Sie entsprechende Maßnahmen.</p>' +
+                        '<p>Mit freundlichen Grüßen,<br>Ihr AmouFileWatch System</p>' +
+                        '</body>' +
+                        '</html>';
+
+        // Ersetze die Platzhalter durch die tatsächlichen Werte
+        EmailBody := StrSubstNo(EmailBody, FileName, JobRec."Job Name", JobRec."Folder Path", JobRec."Monitoring Interval", JobRec."Email Recipient");
+
+        if LanguageCode = 'DEU' then begin
+            // Erstelle die E-Mail-Nachricht
+            EmailMessage.Create(JobRec."Email Recipient", 'Fehlerbenachrichtigung', EmailBody, true);
+        end else begin
+            // Erstelle die E-Mail-Nachricht
+            EmailMessage.Create(JobRec."Email Recipient", 'Error Notification', EmailBody, true);
+        end;
+
+        // Sende die E-Mail
         Email.Send(EmailMessage);
     end;
-    // Datei überprüfen
-    procedure CheckFile(Pfad: Text)
-    begin
-        If File.Exists(Pfad) then begin
-            Message('Es wurde folgende Datei geprüft:\%1\Die Datei existiert.', Pfad);
-        end else
-            Message('Es wurde folgende Datei geprüft:\%1\Die Datei existiert nicht.', Pfad);
-    end;
-
     // Pfad überprüfen
     procedure CheckPath(Pfad: Text): Boolean
     var
@@ -223,7 +267,6 @@ codeunit 50100 "AFW Functions"
         PfadVar.Close();
         File.Erase(Pfad);
         exit(true)
-
     end;
 
     // Überprüft den Job und setzt den Status auf "Ready", wenn alle Einträge korrekt sind.
@@ -277,13 +320,24 @@ codeunit 50100 "AFW Functions"
         NoSeriesManagement: Codeunit "No. Series";
         EmailSent: Boolean;
         EmailInterval: Duration;
+        FileTypes: Record "AFW File Types";
+        ShouldUpdateLastChecked: Boolean;
+        ShouldUpdateLastEmailSent: Boolean;
     begin
         AFWJobs.SetRange(Status, AFWJobs.Status::Ready);
         if AFWJobs.FindSet() then
             repeat
                 EmailSent := false;
+                ShouldUpdateLastChecked := false;
+                ShouldUpdateLastEmailSent := false;
+
                 if Directory.Exists(AFWJobs."Folder Path") then begin
                     Files := Directory.GetFiles(AFWJobs."Folder Path");
+                    CurrentTime := CurrentDateTime;
+                    MonitoringInterval := AFWJobs."Monitoring Interval" * 60000; // Umrechnung in Millisekunden
+                    EmailInterval := AFWJobs."Minutes Between Emails" * 60000; // Umrechnung in Millisekunden
+                    LastChecked := AFWJobs."Last Checked";
+
                     for i := 0 to Files.Length - 1 do begin
                         File := Files.GetValue(i);
                         FileInfo := FileInfo.FileInfo(File);
@@ -292,60 +346,89 @@ codeunit 50100 "AFW Functions"
                         // Überprüfe, ob die Datei den richtigen Typ hat
                         if IsFileTypeAllowed(AFWJobs."File Types", FileName) then begin
                             // Überprüfe, ob die Datei älter ist als das Überwachungsintervall
-                            CurrentTime := CurrentDateTime;
-                            MonitoringInterval := AFWJobs."Monitoring Interval" * 60000; // Umrechnung in Millisekunden
-                            LastChecked := AFWJobs."Last Checked";
-
                             if (CurrentTime - FileInfo.LastWriteTime) > MonitoringInterval then begin
-                                // Überprüfe, ob die E-Mail bereits innerhalb des Intervalls gesendet wurde
-                                EmailInterval := AFWJobs."Minutes Between Emails" * 60000; // Umrechnung in Millisekunden
-                                if AFWJobs."Last EMail Sent" = 0DT then begin
-                                    // Sende E-Mail, wenn die Datei älter ist als das Intervall
-                                    SendEmailNotification(AFWJobs, FileName);
-                                    AFWJobs."Last EMail Sent" := CurrentDateTime;
-                                    AFWJobs.Modify(true);
-                                    EmailSent := true;
-                                end else begin
-                                    if (CurrentTime - AFWJobs."Last EMail Sent") > EmailInterval then begin
+                                if AFWJobs."Last Checked" = 0DT then begin
+                                    // Überprüfe, ob die E-Mail bereits innerhalb des Intervalls gesendet wurde
+                                    if AFWJobs."Last EMail Sent" = 0DT then begin
                                         // Sende E-Mail, wenn die Datei älter ist als das Intervall
                                         SendEmailNotification(AFWJobs, FileName);
-                                        AFWJobs."Last EMail Sent" := CurrentDateTime;
-                                        AFWJobs.Modify(true);
+                                        ShouldUpdateLastEmailSent := true;
                                         EmailSent := true;
+                                    end else begin
+                                        if (CurrentTime - AFWJobs."Last EMail Sent") > EmailInterval then begin
+                                            // Sende E-Mail, wenn die Datei älter ist als das Intervall
+                                            SendEmailNotification(AFWJobs, FileName);
+                                            ShouldUpdateLastEmailSent := true;
+                                            EmailSent := true;
+                                        end;
+                                    end;
+                                    // Protokolliere den Alarm wenn 
+                                    Alerts.Init();
+                                    Alerts."Primary Key" := NoSeriesManagement.GetNextNo('AFW Alerts NS', Today, true); // Nummernserie verwenden
+                                    Alerts."File ID" := CreateGuid();
+                                    Alerts."Job Code" := AFWJobs."Primary Key";
+                                    Alerts."Alert Timestamp" := CurrentDateTime;
+                                    Alerts."Alert Message" := StrSubstNo('Datei %1 ist älter als das Überwachungsintervall.', FileName);
+                                    Alerts."Recipient" := AFWJobs."Email Recipient";
+                                    Alerts."File Name" := FileName;
+                                    Alerts.Insert();
+                                    ShouldUpdateLastChecked := true;
+                                end else begin
+                                    if (CurrentTime - AFWJobs."Last Checked") > MonitoringInterval then begin
+                                        // Überprüfe, ob die E-Mail bereits innerhalb des Intervalls gesendet wurde
+                                        if AFWJobs."Last EMail Sent" = 0DT then begin
+                                            // Sende E-Mail, wenn die Datei älter ist als das Intervall
+                                            SendEmailNotification(AFWJobs, FileName);
+                                            ShouldUpdateLastEmailSent := true;
+                                            EmailSent := true;
+                                        end else begin
+                                            if (CurrentTime - AFWJobs."Last EMail Sent") > EmailInterval then begin
+                                                // Sende E-Mail, wenn die Datei älter ist als das Intervall
+                                                SendEmailNotification(AFWJobs, FileName);
+                                                ShouldUpdateLastEmailSent := true;
+                                                EmailSent := true;
+                                            end;
+                                        end;
+                                        // Protokolliere den Alarm wenn 
+                                        Alerts.Init();
+                                        Alerts."Primary Key" := NoSeriesManagement.GetNextNo('AFW Alerts NS', Today, true); // Nummernserie verwenden
+                                        Alerts."File ID" := CreateGuid();
+                                        Alerts."Job Code" := AFWJobs."Primary Key";
+                                        Alerts."Alert Timestamp" := CurrentDateTime;
+                                        Alerts."Alert Message" := StrSubstNo('Datei %1 ist älter als das Überwachungsintervall.', FileName);
+                                        Alerts."Recipient" := AFWJobs."Email Recipient";
+                                        Alerts."File Name" := FileName;
+                                        Alerts.Insert();
+                                        ShouldUpdateLastChecked := true;
                                     end;
                                 end;
-
-                                // Aktualisiere den Zeitstempel der letzten Überprüfung nur, wenn die Datei älter ist als das Überwachungsintervall
-                                AFWJobs."Last Checked" := CurrentDateTime;
-                                AFWJobs.Modify();
-
-                                // Protokolliere den Alarm
-                                Alerts.Init();
-                                Alerts."Primary Key" := NoSeriesManagement.GetNextNo('AFW Alerts NS', Today, true); // Nummernserie verwenden
-                                Alerts."File ID" := CreateGuid();
-                                Alerts."Alert Timestamp" := CurrentDateTime;
-                                Alerts."Alert Message" := StrSubstNo('Datei %1 ist älter als das Überwachungsintervall.', FileName);
-                                Alerts."Recipient" := AFWJobs."Email Recipient";
-                                Alerts."File Name" := FileName;
-                                Alerts.Insert();
                             end;
                         end;
                     end;
 
-                    // Wenn keine E-Mail gesendet wurde, aktualisiere den Zeitstempel der letzten Überprüfung
-                    if not EmailSent then begin
-                        AFWJobs."Last Checked" := CurrentDateTime;
+                    // Aktualisiere den Zeitstempel der letzten Überprüfung
+                    if ShouldUpdateLastChecked then begin
+                        AFWJobs."Last Checked" := CurrentTime;
+                        AFWJobs.Modify();
+                    end;
+
+                    // Aktualisiere den Zeitstempel der letzten gesendeten E-Mail
+                    if ShouldUpdateLastEmailSent then begin
+                        AFWJobs."Last EMail Sent" := CurrentTime;
                         AFWJobs.Modify();
                     end;
                 end else begin
                     AFWJobs.Status := AFWJobs.Status::Error;
                     AFWJobs.Modify();
+
                     // Protokolliere den Fehler
                     Alerts.Init();
                     Alerts."Primary Key" := NoSeriesManagement.GetNextNo('AFW Alerts NS', Today, true); // Nummernserie verwenden
                     Alerts."File ID" := CreateGuid();
+                    Alerts."Job Code" := AFWJobs."Primary Key";
                     Alerts."Alert Timestamp" := CurrentDateTime;
                     Alerts."Alert Message" := StrSubstNo('Pfad %1 wurde nicht gefunden.', AFWJobs."Folder Path");
+
                     // Wenn Mail versendet wurde, dann Empfänger in Alert Tabelle
                     if EmailSent then begin
                         Alerts."Recipient" := AFWJobs."Email Recipient";
@@ -357,13 +440,17 @@ codeunit 50100 "AFW Functions"
     end;
 
     // Hilfsfunktion zur Überprüfung des Dateityps
-    procedure IsFileTypeAllowed(FileTypes: Enum "AFW File Types"; FileName: Text): Boolean
+    procedure IsFileTypeAllowed(FileTypesCode: Code[10]; FileName: Text): Boolean
     var
+        FileTypes: Record "AFW File Types";
         FileExtension: Text;
         LastDotPos: Integer;
     begin
-        if FileTypes = FileTypes::All then
-            exit(true);
+        if FileTypesCode = '' then
+            exit(true); // Wenn kein Dateityp angegeben ist, alle Dateien erlauben
+
+        if not FileTypes.Get(FileTypesCode) then
+            exit(false); // Wenn der Dateityp nicht in der Tabelle gefunden wird, nicht erlauben
 
         // Finde die Position des letzten Punktes im Dateinamen
         LastDotPos := StrLen(FileName);
@@ -377,24 +464,9 @@ codeunit 50100 "AFW Functions"
             exit(false); // Keine Erweiterung gefunden
 
         // Extrahiere die Erweiterung
-        FileExtension := CopyStr(FileName, StrLen(FileName) - LastDotPos + 1);
+        FileExtension := CopyStr(FileName, LastDotPos + 1);
 
-        case FileTypes of
-            FileTypes::PDF:
-                exit(FileExtension = 'pdf');
-            FileTypes::DOCX:
-                exit(FileExtension = 'docx');
-            FileTypes::XLSX:
-                exit(FileExtension = 'xlsx');
-            FileTypes::TXT:
-                exit(FileExtension = 'txt');
-            FileTypes::CSV:
-                exit(FileExtension = 'csv');
-        end;
-    end;
-
-    procedure CheckJobsADHOC(var JobRec: Record "AFW Jobs")
-    begin
-
+        // Vergleiche die Erweiterung mit dem in der Tabelle gespeicherten Wert
+        exit(UpperCase(FileExtension) = FileTypes."Primary Key");
     end;
 }

@@ -29,8 +29,15 @@
         </trans-unit>
         <trans-unit id="Table 1235994815 - Field 804481195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>File Name</source>
-          <note from="Developer" annotates="general" priority="2"/>
+          <target state="translated">Dateiname</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Dateiname"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Alerts - Field File Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1235994815 - Field 3982294038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job Code</source>
+          <target state="translated">Job Code</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Job Code"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Alerts - Field Job Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1235994815 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary key</source>
@@ -43,6 +50,24 @@
           <target state="translated">Empfänger</target>
           <note from="Developer" annotates="general" priority="2">DEU="Empfänger"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Alerts - Field Recipient - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1491221199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AFW File Types</source>
+          <target state="translated">AFW Datentypen</target>
+          <note from="Developer" annotates="general" priority="2">DEU="AFW Datentypen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW File Types - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1491221199 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target state="translated">Beschreibung</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Beschreibung"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW File Types - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1491221199 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary key</source>
+          <target state="translated">Primärschlüssel</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Primärschlüssel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table AFW File Types - Field Primary Key - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2365935200 - Field 474016873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Email Recipient</source>
@@ -104,12 +129,6 @@
           <note from="Developer" annotates="general" priority="2">DEU="Status"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Jobs - Field Status - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 273126673 - Field 1451063990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Enable Logging</source>
-          <target state="translated">Protokollierung aktivieren</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Protokollierung aktivieren"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Enable Logging - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 273126673 - Field 2607589527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enable Monitoring</source>
           <target state="translated">Überwachung aktivieren</target>
@@ -122,18 +141,6 @@
           <note from="Developer" annotates="general" priority="2">DEU="Fehler-E-Mail-Body"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Error Email Body - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 273126673 - Field 1689582310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Info Email Body</source>
-          <target state="translated">Info-E-Mail-Body</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Info-E-Mail-Body"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Info Email Body - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 273126673 - Field 3009152865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Log File Path</source>
-          <target state="translated">Protokolldateipfad</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Protokolldateipfad"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Log File Path - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 273126673 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary key</source>
           <target state="translated">Primärschlüssel</target>
@@ -145,12 +152,6 @@
           <target state="translated">Absenderadresse</target>
           <note from="Developer" annotates="general" priority="2">DEU="Absenderadresse"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Sender's Address - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 273126673 - Field 3021345882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Warning Email Body</source>
-          <target state="translated">Warnung-E-Mail-Body</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Warnung-E-Mail-Body"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Warning Email Body - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1199857104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AFW Alert List</source>
@@ -194,6 +195,12 @@
           <note from="Developer" annotates="general" priority="2">DEU="Dateiname"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Control File Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1199857104 - Control 3982294038 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Job Code</source>
+          <target state="translated">Gibt den Job Code des Jobs an.</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Gibt den Job Code des Jobs an."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Control Job Code - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 1199857104 - Control 1663593181 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the primary key of the alert.</source>
           <target state="translated">Gibt den Primärschlüssel der Fehlermeldung an.</target>
@@ -223,6 +230,24 @@
           <target state="translated">Liste aktualisieren</target>
           <note from="Developer" annotates="general" priority="2">DEU="Liste aktualisieren"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Action Refresh List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3563712985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AFW File Types</source>
+          <target state="translated">AFW Datentypen</target>
+          <note from="Developer" annotates="general" priority="2">DEU="AFW Datentypen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW File Types List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3563712985 - Control 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target state="translated">Beschreibung</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Beschreibung"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW File Types List - Control Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3563712985 - Control 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key</source>
+          <target state="translated">Primärschlüssel</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Primärschlüssel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW File Types List - Control Primary Key - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1084499733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AFW Job Creation</source>
@@ -362,6 +387,18 @@
           <note from="Developer" annotates="general" priority="2">DEU="Gibt den aktuellen Status des Jobs an."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Control Status - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1831751231 - Action 2286498038 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Test the jobs for its existence and accessibility</source>
+          <target state="translated">Testen Sie die Jobs auf seine Existenz und Erreichbarkeit</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Testen Sie die Jobs auf seine Existenz und Erreichbarkeit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Action CheckJobs - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1831751231 - Action 2286498038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check jobs</source>
+          <target state="translated">Jobs prüfen</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Jobs prüfen"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Job List - Action CheckJobs - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1831751231 - Action 3261967079 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Set the job status to Ready if all entries are correct.</source>
           <target state="translated">Setze den Jobstatus auf Ready, wenn alle Einträge korrekt sind.</target>
@@ -392,59 +429,11 @@
           <note from="Developer" annotates="general" priority="2">DEU="AFW Einrichtung"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 273126673 - Control 3129275966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Email Bodies</source>
-          <target state="translated">E-Mail-Bodys</target>
-          <note from="Developer" annotates="general" priority="2">DEU="E-Mail-Bodys"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control EmailBodies - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Control 3449136632 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The body of the email for error messages.</source>
-          <target state="translated">Der Body der E-Mail für Fehlermeldungen.</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Der Body der E-Mail für Fehlermeldungen."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control ErrorEmailBody - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Control 3449136632 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Error Email Body</source>
-          <target state="translated">Fehler-E-Mail-Body</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Fehler-E-Mail-Body"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control ErrorEmailBody - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Control 1208882822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The body of the email for informational messages.</source>
-          <target state="translated">Der Body der E-Mail für Informationsmeldungen.</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Der Body der E-Mail für Informationsmeldungen."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control InfoEmailBody - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Control 1208882822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Info Email Body</source>
-          <target state="translated">Info-E-Mail-Body</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Info-E-Mail-Body"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control InfoEmailBody - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Control 5608282 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The body of the email for warning messages.</source>
-          <target state="translated">Der Body der E-Mail für Warnmeldungen.</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Der Body der E-Mail für Warnmeldungen."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control WarningEmailBody - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Control 5608282 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Warning Email Body</source>
-          <target state="translated">Warnung-E-Mail-Body</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Warnung-E-Mail-Body"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control WarningEmailBody - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 273126673 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>General Settings</source>
           <target state="translated">Allgemeine Einstellungen</target>
           <note from="Developer" annotates="general" priority="2">DEU="Allgemeine Einstellungen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control General - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Control 1451063990 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Enable or disable logging of events.</source>
-          <target state="translated">Protokollierung von Ereignissen aktivieren oder deaktivieren.</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Protokollierung von Ereignissen aktivieren oder deaktivieren."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control Enable Logging - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 273126673 - Control 2607589527 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Globally enable or disable monitoring.</source>
@@ -452,75 +441,11 @@
           <note from="Developer" annotates="general" priority="2">DEU="Überwachung global aktivieren oder deaktivieren."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control Enable Monitoring - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 273126673 - Control 3009152865 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specify the path where the log files should be stored.</source>
-          <target state="translated">Geben Sie den Pfad an, in dem die Protokolldateien gespeichert werden sollen.</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Geben Sie den Pfad an, in dem die Protokolldateien gespeichert werden sollen."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control Log File Path - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 273126673 - Control 2106217075 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>The email address from which to send emails.</source>
           <target state="translated">Die E-Mail-Adresse, von der die E-Mails gesendet werden sollen.</target>
           <note from="Developer" annotates="general" priority="2">DEU="Die E-Mail-Adresse, von der die E-Mails gesendet werden sollen."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Control Sender's Address - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Action 1886113076 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Test the file for its existence and accessibility</source>
-          <target state="translated">Testen Sie die Datei auf seine Existenz und Erreichbarkeit</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Testen Sie die Datei auf seine Existenz und Erreichbarkeit"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckFile - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Action 1886113076 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Check file</source>
-          <target state="translated">Datei prüfen</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Datei prüfen"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckFile - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Action 2286498038 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Test the jobs for its existence and accessibility</source>
-          <target state="translated">Testen Sie die Jobs auf seine Existenz und Erreichbarkeit</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Testen Sie die Jobs auf seine Existenz und Erreichbarkeit"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckJobs - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Action 2286498038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Check jobs</source>
-          <target state="translated">Jobs prüfen</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Jobs prüfen"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckJobs - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Action 2621021221 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Test the directory for its existence and accessibility</source>
-          <target state="translated">Testen Sie den Pfad auf seine Existenz und Erreichbarkeit</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Testen Sie den Pfad auf seine Existenz und Erreichbarkeit"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckPath - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Action 2621021221 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Check directory</source>
-          <target state="translated">Pfad prüfen</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Pfad prüfen"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CheckPath - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Action 1905791958 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Erstellt den notwendigen Eintrag bei der Aufgabenwarteschlangeposten für die Erweiterung.</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CreateJobQueue - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Action 1905791958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create Job Queue Job</source>
-          <target state="translated">Job bei der Aufgabenwarteschlange erstellen</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Job bei der Aufgabenwarteschlange erstellen"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CreateJobQueue - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Action 350355336 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Erstellt die notwendigen Nummernserien für die Erweiterung.</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CreateNumberSeries - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 273126673 - Action 350355336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create No. Series</source>
-          <target state="translated">Nummernserien erstellen</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Nummernserien erstellen"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action CreateNumberSeries - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 273126673 - Action 1285001562 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send a test email to verify the sender's address.</source>
@@ -533,6 +458,18 @@
           <target state="translated">Test-E-Mail senden</target>
           <note from="Developer" annotates="general" priority="2">DEU="Test-E-Mail senden"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action SendTestEmail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Action 1514883969 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Complete all important preparations.</source>
+          <target state="translated">Führen Sie alle wichtigen Vorbereitungen aus.</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Führen Sie alle wichtigen Vorbereitungen aus."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action Setup - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 273126673 - Action 1514883969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup</source>
+          <target state="translated">Vorbereitung</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Vorbereitung"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Setup - Action Setup - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1161460051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Enter Recipient Email Address</source>
@@ -556,43 +493,6 @@
           <source>AFW Alert Report</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Report AFW Alert Report - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 1491221199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>AFW File Types</source>
-          <target state="translated">AFW Dateitypen</target>
-          <note from="Developer" annotates="general" priority="2">DEU="AFW Dateitypen"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum AFW File Types - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 1491221199 - EnumValue 3703598467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>All</source>
-          <target state="translated">Alle</target>
-          <note from="Developer" annotates="general" priority="2">DEU="Alle"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum AFW File Types - EnumValue All - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 1491221199 - EnumValue 487643378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>.csv</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum AFW File Types - EnumValue CSV - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 1491221199 - EnumValue 3985487756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>.docx</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum AFW File Types - EnumValue DOCX - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 1491221199 - EnumValue 3731179934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>.pdf</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum AFW File Types - EnumValue PDF - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 1491221199 - EnumValue 2811995556 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>.txt</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum AFW File Types - EnumValue TXT - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 1491221199 - EnumValue 4062876185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>.xlsx</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum AFW File Types - EnumValue XLSX - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 974612917 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AFW Job Status</source>

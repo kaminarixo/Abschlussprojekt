@@ -29,13 +29,25 @@ table 50101 "AFW Jobs"
             Caption = 'Folder Path', Comment = 'DEU="Ordnerpfad"';
             Description = 'Der Pfad des Ordners, der überwacht wird';
         }
-        field(5; "File Types"; Enum "AFW File Types")
+        field(5; "File Types"; Code[10])
         {
             DataClassification = ToBeClassified;
             Caption = 'File Types', Comment = 'DEU="Dateitypen"';
-            Description = 'Die Dateitypen, die im Ordner überwacht werden';
-
+            TableRelation = "AFW File Types"."Primary Key";
+            trigger OnLookup()
+            var
+                AFWFileTypes: Record "AFW File Types";
+                AFWFileTypesList: Page "AFW File Types List";
+            begin
+                AFWFileTypesList.SetTableView(AFWFileTypes);
+                AFWFileTypesList.LookupMode(true);
+                if AFWFileTypesList.RunModal() = Action::LookupOK then begin
+                    AFWFileTypesList.GetRecord(AFWFileTypes);
+                    Rec."File Types" := AFWFileTypes."Primary Key";
+                end;
+            end;
         }
+
         field(6; "Email Recipient"; Text[250])
         {
             DataClassification = ToBeClassified;
