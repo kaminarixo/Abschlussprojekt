@@ -281,7 +281,7 @@ codeunit 50100 "AFW Functions"
         AFWJobs.SetRange(Status, AFWJobs.Status::Ready);
         if AFWJobs.FindSet() then
             repeat
-                EMailSent := false;
+                EmailSent := false;
                 if Directory.Exists(AFWJobs."Folder Path") then begin
                     Files := Directory.GetFiles(AFWJobs."Folder Path");
                     for i := 0 to Files.Length - 1 do begin
@@ -315,8 +315,7 @@ codeunit 50100 "AFW Functions"
                                     end;
                                 end;
 
-
-                                // Aktualisiere den Zeitstempel der letzten Überprüfung
+                                // Aktualisiere den Zeitstempel der letzten Überprüfung nur, wenn die Datei älter ist als das Überwachungsintervall
                                 AFWJobs."Last Checked" := CurrentDateTime;
                                 AFWJobs.Modify();
 
