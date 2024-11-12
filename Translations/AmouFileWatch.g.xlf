@@ -113,11 +113,6 @@
           <note from="Developer" annotates="general" priority="2">DEU="Überwachung aktivieren"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Enable Monitoring - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 273126673 - Field 1757883032 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Error Email Body</source>
-          <note from="Developer" annotates="general" priority="2">DEU="Fehler-E-Mail-Body"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table AFW Setup - Field Error Email Body - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 273126673 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Primary key</source>
           <note from="Developer" annotates="general" priority="2">DEU="Primärschlüssel"</note>

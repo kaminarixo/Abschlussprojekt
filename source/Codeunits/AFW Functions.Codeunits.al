@@ -160,24 +160,6 @@ codeunit 50100 "AFW Functions"
         Message('Alle Überwachungsjobs wurden gestoppt.');
     end;
 
-    /// Startet alle zugehörigen Jobs, die gestoppt sind.
-    procedure StartMonitoringJobs()
-    var
-        Jobs: Record "AFW Jobs";
-        StartStatus: Enum "AFW Job Status";
-    begin
-        // Setze den Status auf "Ready"
-        StartStatus := StartStatus::Ready;
-
-        if Jobs.FindSet() then
-            repeat
-                Jobs.Status := StartStatus;
-                Jobs.Modify();
-            until Jobs.Next() = 0;
-
-        Message('Alle Überwachungsjobs wurden gestartet.');
-    end;
-
     // Sendet eine Test-E-Mail von der Setup-Seite aus.
     procedure SendTestEmail(SenderAddress: Text; RecipientAddress: Text)
     var
@@ -271,28 +253,35 @@ codeunit 50100 "AFW Functions"
 
     // Überprüft den Job und setzt den Status auf "Ready", wenn alle Einträge korrekt sind.
     procedure SetJobStatusToReady(var JobRec: Record "AFW Jobs")
+    var
+        AFWSetup: Record "AFW Setup";
     begin
-        // Überprüfen, ob alle Pflichtfelder ausgefüllt sind
-        if JobRec."Job Name" = '' then
-            Error('Der Jobname darf nicht leer sein.');
+        if AFWSetup.Get() then
+            if AFWSetup."Enable Monitoring" = true then begin
+                // Überprüfen, ob alle Pflichtfelder ausgefüllt sind
+                if JobRec."Job Name" = '' then
+                    Error('Der Jobname darf nicht leer sein.');
 
-        if JobRec."Folder Path" = '' then
-            Error('Der Ordnerpfad darf nicht leer sein.');
+                if JobRec."Folder Path" = '' then
+                    Error('Der Ordnerpfad darf nicht leer sein.');
 
-        if JobRec."Email Recipient" = '' then
-            Error('Die E-Mail-Adresse des Empfängers darf nicht leer sein.');
+                if JobRec."Email Recipient" = '' then
+                    Error('Die E-Mail-Adresse des Empfängers darf nicht leer sein.');
 
-        if JobRec."Monitoring Interval" <= 0 then
-            Error('Das Überwachungsintervall muss größer als 0 sein.');
+                if JobRec."Monitoring Interval" <= 0 then
+                    Error('Das Überwachungsintervall muss größer als 0 sein.');
 
-        if JobRec."Minutes Between Emails" <= 0 then
-            Error('Die Anzahl der Minuten zwischen E-Mails muss größer als 0 sein.');
+                if JobRec."Minutes Between Emails" <= 0 then
+                    Error('Die Anzahl der Minuten zwischen E-Mails muss größer als 0 sein.');
 
-        // Wenn alle Überprüfungen erfolgreich sind, setze den Status auf "Ready"
-        If CheckPath(JobRec."Folder Path") then begin
-            JobRec.Status := JobRec.Status::Ready;
-            JobRec.Modify();
-        end;
+                // Wenn alle Überprüfungen erfolgreich sind, setze den Status auf "Ready"
+                If CheckPath(JobRec."Folder Path") then begin
+                    JobRec.Status := JobRec.Status::Ready;
+                    JobRec.Modify();
+                end;
+            end else begin
+                Error('Die Überwachung ist im Setup deaktiviert!\Bitte aktivieren Sie diese zuerst.');
+            end;
     end;
 
     // Setzt den Status des Jobs auf "Stopped".

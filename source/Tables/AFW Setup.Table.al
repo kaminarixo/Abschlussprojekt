@@ -20,14 +20,12 @@ table 50100 "AFW Setup"
             var
                 AFWFunctions: Codeunit "AFW Functions";
             begin
-                if not Rec."Enable Monitoring" then begin
+                if not Rec."Enable Monitoring" then
                     if not AFWFunctions.ConfirmDeactivation(Rec) then begin
                         Message('Aktion abgebrochen.');
                         "Enable Monitoring" := true;
                     end else
                         AFWFunctions.StopMonitoringJobs();
-                end else
-                    AFWFunctions.StartMonitoringJobs();
             end;
         }
         field(3; "Sender's Address"; Text[250])
