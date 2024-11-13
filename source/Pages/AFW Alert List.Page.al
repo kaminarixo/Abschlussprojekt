@@ -62,11 +62,28 @@ page 50102 "AFW Alert List"
                 Caption = 'Refresh List', Comment = 'DEU="Liste aktualisieren"';
                 ToolTip = 'Refreshes the list of alerts.', Comment = 'DEU="Aktualisiert die Liste der Alarme."';
                 Image = Refresh;
+
                 trigger OnAction()
                 begin
                     CurrPage.Update(true);
                 end;
             }
+            action("Report")
+            {
+                ApplicationArea = All;
+                Caption = 'Report', Comment = 'DEU="Bericht"';
+                Tooltip = 'A report on the alerts.', Comment = 'DEU="Ein Bericht über die Meldungen."';
+                Image = Report;
+
+                trigger OnAction()
+                var
+                    AFWAlertReport: Report "AFW Alert Report";
+                begin
+                    AFWAlertReport.Run();
+                end;
+            }
+
+
         }
     }
 }

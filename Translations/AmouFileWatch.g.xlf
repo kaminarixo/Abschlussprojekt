@@ -188,6 +188,16 @@
           <note from="Developer" annotates="general" priority="2">DEU="Liste aktualisieren"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Action Refresh List - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1199857104 - Action 3375155882 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A report on the alerts.</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Ein Bericht über die Meldungen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Action Report - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1199857104 - Action 3375155882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report</source>
+          <note from="Developer" annotates="general" priority="2">DEU="Bericht"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Action Report - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3563712985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AFW File Types</source>
           <note from="Developer" annotates="general" priority="2">DEU="AFW Datentypen"</note>
@@ -404,9 +414,19 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Email Input Page - Control RecipientAddress - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2249230884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>AFW Alert Report</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <source>AFW Alert Bericht</source>
+          <note from="Developer" annotates="general" priority="2">ENU="AFW Alert Report"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Report AFW Alert Report - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2249230884 - Control 2110632758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Von Datum</source>
+          <note from="Developer" annotates="general" priority="2">ENU="From Date"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AFW Alert Report - Control From Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2249230884 - Control 2565971985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bis Datum</source>
+          <note from="Developer" annotates="general" priority="2">ENU="To Date"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AFW Alert Report - Control To Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 974612917 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AFW Job Status</source>

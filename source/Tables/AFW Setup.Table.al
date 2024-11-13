@@ -20,11 +20,14 @@ table 50100 "AFW Setup"
             var
                 AFWFunctions: Codeunit "AFW Functions";
             begin
+                // Überprüfen, ob die Überwachung deaktiviert werden soll
                 if not Rec."Enable Monitoring" then
                     if not AFWFunctions.ConfirmDeactivation(Rec) then begin
+                        // Aktion abgebrochen
                         Message('Aktion abgebrochen.');
                         "Enable Monitoring" := true;
                     end else
+                        // Überwachungsjobs stoppen
                         AFWFunctions.StopMonitoringJobs();
             end;
         }
@@ -38,6 +41,7 @@ table 50100 "AFW Setup"
             var
                 EmailAccountVar: Record "Email Account";
             begin
+                // E-Mail-Konten anzeigen und Absenderadresse auswählen
                 EmailAccountVar.Reset();
                 if Page.RunModal(Page::"Email Accounts", EmailAccountVar) = Action::LookupOK then
                     "Sender's Address" := EmailAccountVar."Email Address";

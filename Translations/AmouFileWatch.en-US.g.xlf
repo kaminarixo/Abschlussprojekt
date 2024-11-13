@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-US" original="AmouFileWatch">
+    <body>
+      <group id="body">
+        <trans-unit id="Report 2249230884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AFW Alert Bericht</source>
+          <target state="translated">AFW Alert Report</target>
+          <note from="Developer" annotates="general" priority="2">ENU="AFW Alert Report"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AFW Alert Report - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2249230884 - Control 2110632758 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Von Datum</source>
+          <target state="translated">From Date</target>
+          <note from="Developer" annotates="general" priority="2">ENU="From Date"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AFW Alert Report - Control From Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 2249230884 - Control 2565971985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bis Datum</source>
+          <target state="translated">To Date</target>
+          <note from="Developer" annotates="general" priority="2">ENU="To Date"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report AFW Alert Report - Control To Date - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

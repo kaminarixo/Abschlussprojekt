@@ -225,6 +225,18 @@
           <note from="Developer" annotates="general" priority="2">DEU="Liste aktualisieren"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Action Refresh List - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1199857104 - Action 3375155882 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A report on the alerts.</source>
+          <target state="translated">Ein Bericht über die Meldungen.</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Ein Bericht über die Meldungen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Action Report - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1199857104 - Action 3375155882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report</source>
+          <target state="translated">Bericht</target>
+          <note from="Developer" annotates="general" priority="2">DEU="Bericht"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page AFW Alert List - Action Report - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3563712985 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AFW File Types</source>
           <target state="translated">AFW Datentypen</target>
@@ -482,11 +494,6 @@
           <target state="translated">Empfänger-E-Mail-Adresse</target>
           <note from="Developer" annotates="general" priority="2">DEU="Empfänger-E-Mail-Adresse"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Email Input Page - Control RecipientAddress - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Report 2249230884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>AFW Alert Report</source>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Report AFW Alert Report - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 974612917 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>AFW Job Status</source>
